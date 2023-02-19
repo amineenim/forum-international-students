@@ -1,0 +1,43 @@
+
+.home-body {
+    display: flex;
+    justify-content: space-evenly;
+    padding : 4rem 1.6rem;
+    height: 100vh;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    max-width: 40%;
+    align-items: center;
+    justify-content: center;
+}
+.right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.right img {
+    border: solid gray 1px;
+    height: 600px;
+    width: 600px;
+    box-shadow: 8px 6px gray;
+}
+.arrowleft, .arrowright {
+    background-color: gray;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    border-radius: 50%;
+    font-size: 1.6rem;
+}
+.btn {
+    height: 2rem;
+    font-size: 1.2rem;
+    background: rgb(102, 26, 26);
+    color: white;
+    padding : 0.2rem 0.6rem;
+}

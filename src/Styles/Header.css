@@ -1,0 +1,30 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding : 1rem 2rem;
+}
+.logo {
+    display: flex;
+    align-items: center;
+}
+.logo img {
+    height: 6rem;
+    border-radius: 50%;
+}
+.links {
+    display: flex;
+    align-items: center;
+}
+
+.mon-compte {
+    display: flex;
+    align-items: center;
+}
+.links li {
+    list-style-type: none;
+    margin-left: 2rem;
+}
+.mon-compte p {
+    padding-right: 0.6rem;
+}
