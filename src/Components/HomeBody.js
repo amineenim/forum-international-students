@@ -8,9 +8,26 @@ import university from '../assets/university.jpg'
 import biblio from '../assets/biblio.jpg'
 import {FaArrowLeft,FaArrowRight} from 'react-icons/fa'
 
-function HomeBody() {
-    const images = [studentsGlobe,students,conference,university,biblio]
-    const [currentImage,setCurrentImage] = useState(0)
+class HomeBody extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {currentImage : 0}
+    }
+    images = [studentsGlobe,students,conference,university,biblio]
+    changeImage(){
+        this.state.currentImage === this.images.length - 1 ?
+            this.setState({currentImage : 0}) : 
+            (this.setState({currentImage : this.state.currentImage + 1}))
+    }
+    // function that sets a timer whenever the component is displayed in the UI
+    componentDidMount(){
+        setInterval(() => this.changeImage(),4000)
+    }
+    componentWillUnmount(){
+        clearInterval(this.changeImage())
+    }
+
+    render(){
   return (
     <div className='home-body'>
         <div className='left'>
@@ -28,20 +45,23 @@ function HomeBody() {
         </div>
         <div className='right'>
             <div className='arrowleft'>
-                <FaArrowLeft className='arrows' onClick={() => (
-                   currentImage > 0 ? setCurrentImage(prevState => prevState - 1) : setCurrentImage(images.length-1)
-                )  
+                <FaArrowLeft className='arrows' onClick={() => {
+                  this.state.currentImage > 0 ? this.setState({currentImage : this.state.currentImage - 1}) : this.setState({currentImage : this.images.length - 1})
+                }  
                 }/>
             </div>
-            <img src={images[currentImage]} alt="students-holding-the-globe"/>
+            <img src={this.images[this.state.currentImage]} alt="students-holding-the-globe"/>
             <div className='arrowright'>
                 <FaArrowRight className='arrows' onClick={() => (
-                    currentImage < images.length-1 ? setCurrentImage(prevState => prevState + 1) : setCurrentImage(0)
+                    this.state.currentImage < this.images.length - 1 ? this.setState({currentImage : this.state.currentImage + 1}) : this.setState({currentImage : 0})
                 )}/>
             </div>
         </div>
     </div>
   )
+
+    }
+
 }
 
 export default HomeBody

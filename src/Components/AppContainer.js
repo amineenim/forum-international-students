@@ -1,10 +1,11 @@
 import React from 'react';
 import Home from '../pages/Home';
+import Login from '../pages/Login';
 
 function AppContainer() {
   return (
     <div>
-        <Home/>
+        <Login/>
     </div>
   )
 }
