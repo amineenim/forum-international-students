@@ -3,7 +3,7 @@
 import React from "react";
 import together from '../assets/together.webp';
 import '../Styles/Header.css';
-import {FaUserAlt} from 'react-icons/fa'
+import AccountMenu from "./AccountMenu";
 
 function Header(){
     return (
@@ -19,8 +19,7 @@ function Header(){
                     <li>A propos</li>
                     <li>
                         <div className="mon-compte">
-                            <p>Mon Compte</p>
-                            <FaUserAlt/>
+                        <AccountMenu/>
                         </div>
                     </li>
                 </ul>
