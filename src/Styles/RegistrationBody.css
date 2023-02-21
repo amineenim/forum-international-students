@@ -1,0 +1,71 @@
+
+.registration-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../assets/bg-university.avif');
+    padding : 2rem;
+}
+.registration-head {
+    display: flex;
+    background-color: rgb(255, 241, 224);
+    flex-direction: column;
+    align-items: center;
+
+}
+.registration-head h3 {
+    text-decoration: underline;
+}
+.registration-head h2 {
+    padding : 1rem;
+}
+
+.registration-foot {
+    background-color: rgb(255, 241, 224);
+    width: 43%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding : 1rem 0;
+}
+.registration-foot form div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom : 0.6rem;
+    padding : 0 1rem;
+}
+form {
+    max-height: 70%;
+}
+form label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+form input {
+    height: 1.8rem;
+    width: 16rem;
+    border: gray solid 1px;
+    border-radius: 8px;
+    margin-top : 0.3rem;
+    padding-left: 1rem;
+}
+
+.register-btn {
+    height: 2rem;
+    width: 70%;
+    margin : 1rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    border: gray solid 1px;
+    border-radius: 8px;
+    box-shadow: 6px 6px;
+}
+.error-text {
+    color: red;
+    font-size: 0.8rem;
+    padding-top : 4px;
+}

@@ -46,7 +46,7 @@ function LoginBody() {
                         id="email"
                         {...register("email",{
                             required : true,
-                            patternn : /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
+                            pattern : /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
                         })}
                         />
                         {errors.email && errors.email.type === "required" &&
