@@ -1,12 +1,22 @@
 
 .footer {
     display: flex;
-    padding : 1rem 1.5rem;
-    justify-content: space-evenly;
+    padding : 1rem  3rem;
+    justify-content: space-between;
 }
 
 .footer .right {
     display: flex;
     flex-direction: column;
     font-size: 0.7rem;
+    margin-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer .left {
+    max-width: 30rem;
+    font-size: 0.9rem;
+    font-style: italic;
 }
