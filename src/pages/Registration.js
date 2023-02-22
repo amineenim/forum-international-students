@@ -7,7 +7,7 @@ import '../Styles/RegistrationBody.css';
 
 function Registration() {
   return (
-    <div>
+    <div className='registration-page'>
         <Header/>
         <RegistrationBody/>
         <Footer/>

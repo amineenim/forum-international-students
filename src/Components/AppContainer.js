@@ -1,11 +1,12 @@
 import React from 'react';
 import Registration from '../pages/Registration';
+import Temoignage from '../pages/Temoignage';
 
 
 function AppContainer() {
   return (
     <div>
-        <Registration/>
+        <Temoignage/>
     </div>
   )
 }

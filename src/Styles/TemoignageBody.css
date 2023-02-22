@@ -1,0 +1,43 @@
+
+.temoignage-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../assets/testimonial.jpg");
+    background-repeat: repeat-x;
+}
+.temoignage-student {
+    width : 80%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding : 0 2rem;
+    font-size: 1.2rem;
+}
+.temoignage-student img {
+    height: 34%;
+    border : gray solid 1px;
+    border-radius: 50%;
+}
+.temoignage-student p {
+    max-width: 70%;
+    padding : 1.5rem;
+    color: white;
+}
+.skip {
+    margin : 2rem 2rem;
+    display: flex;
+    align-items: center;
+}
+.skip .left {
+    background-color: brown;
+    padding : 0.6rem 1rem;
+}
+.skip .right {
+    background-color:brown;
+    padding : 0.6rem 1rem;
+}
