@@ -1,0 +1,76 @@
+
+.profile-container {
+    height: 100vh;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-image: url("../assets/bg-university.avif");
+}
+.left-section {
+    padding : 1rem 2rem;
+    background-color: bisque;
+}
+.student-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.img-container {
+    margin-right: 18px;
+    padding : 1.5rem;
+}
+.img-container img {
+    height: 16rem;
+    border : gray 1px solid;
+    border-radius: 50%;
+    z-index: 20;
+}
+.camera{
+    margin-left : 11rem;
+    background-color: gray;
+    padding : 3px;
+}
+.camera-container {
+    z-index : 30;
+    position: relative;
+    bottom: 36px;
+}
+.student-data .name,.student-data .email,.student-data .filiere, .student-data .promo {
+    display: flex;
+    align-items: center;
+    margin-left : 10px;
+}
+.student-data {
+    background-color: rgb(27, 21, 21);
+    color: white;
+    padding : 1rem;
+}
+.student-data strong {
+    margin-right: 10px;
+}
+.student-data p {
+    font-size: 18px;
+    font-weight: 600;
+}
+.right-section {
+    display: flex;
+    flex-direction: column;
+    padding : 2rem;
+    background-color: bisque;
+    height: 20rem;
+}
+.modify-profile, .change-password, .deconnecter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6rem;
+}
+.right-section .btn {
+    height: 2rem;
+    width : 10rem;
+    margin-left: 0.3rem;
+    border : gray 1px solid ;
+    border-radius: 8px;
+    color : white;
+    background-color: rgb(27, 21, 21);
+    font-size: 14px;
+}
