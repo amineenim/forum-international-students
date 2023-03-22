@@ -1,0 +1,48 @@
+
+
+.single-friend {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    background-color: blue;
+    justify-content: space-between;
+    padding: 0.3rem 1rem;
+    border :solid black 2px;
+    cursor: pointer;
+    height: fit-content;
+    border-radius: 10px;
+}
+.profile-avatar img{
+    height: 2.5rem;
+    width: 2.5rem;
+    position: absolute;
+    top:0;
+    left: 0;
+    margin: 0;
+    border-radius: 50%;
+}
+.profile-avatar div  {
+    z-index: 9;
+    background-color: red;
+    height: 0.6rem;
+    width: 0.6rem;
+    border: solid black 2px;
+    margin-left: 2rem;
+    margin-top: 1.8rem;
+    border-radius: 50%;
+}
+.profile-avatar {
+    display: flex;
+    position: relative;
+    margin: 0;
+}
+.profile-avatar .en-ligne {
+    background-color: greenyellow;
+}
+.profile-avatar .hors-ligne {
+    background-color: rgb(163, 161, 161);
+}
+.single-friend p {
+    font-size: 16px;
+    font-weight: 400;
+}
