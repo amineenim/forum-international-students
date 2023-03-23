@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Typography, TextField, Button, IconButton, InputAdornment } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
+import UniversityImage from '../assets/bg-university.avif';
 
 const ChangePasswordPage = () => {
 
@@ -36,7 +37,7 @@ const ChangePasswordPage = () => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', backgroundImage: `url(${UniversityImage})` }}>
       <Typography variant="h5" style={{ marginBottom: 10 }}>Changer de mot de passe</Typography>
       <form onSubmit={handleSubmit}>
         <TextField
@@ -58,6 +59,10 @@ const ChangePasswordPage = () => {
                 </IconButton>
               </InputAdornment>
             ),
+            style: {
+                      
+              backgroundColor: 'white', 
+            },
           }}
         />
         <TextField
@@ -79,6 +84,10 @@ const ChangePasswordPage = () => {
               </IconButton>
             </InputAdornment>
           ),
+          style: {
+                      
+            backgroundColor: 'white', 
+          },
         }}
         />
         <TextField
@@ -100,6 +109,10 @@ const ChangePasswordPage = () => {
                 </IconButton>
               </InputAdornment>
             ),
+            style: {
+                      
+              backgroundColor: 'white', 
+            },
           }}
         />
         <Button variant="contained" color="primary" type="submit" style={{ backgroundColor: 'brown', marginTop: '1rem' }}>

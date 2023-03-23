@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import UniversityImage from '../assets/bg-university.avif';
 
 const theme = createTheme({
     palette: {
@@ -32,6 +33,9 @@ export default function ConatctBody() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            backgroundImage: `url(${UniversityImage})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         >
           <Typography component="h1" variant="h5">
@@ -47,6 +51,12 @@ export default function ConatctBody() {
                   id="name"
                   label="Nom"
                   autoFocus
+                  InputProps={{
+                    style: {
+                      
+                      backgroundColor: 'white', 
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -56,6 +66,12 @@ export default function ConatctBody() {
                   label="Adresse mail"
                   name="email"
                   autoComplete="family-name"
+                  InputProps={{
+                    style: {
+                      
+                      backgroundColor: 'white', 
+                    },
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -67,6 +83,12 @@ export default function ConatctBody() {
                   autoComplete="message"
                   multiline
                   rows={4}
+                  InputProps={{
+                    style: {
+                      
+                      backgroundColor: 'white', 
+                    },
+                  }}
                 />
               </Grid>
               
