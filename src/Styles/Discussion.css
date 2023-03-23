@@ -1,0 +1,28 @@
+
+
+.conversation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+.top-conversation {
+    width: 74%;
+    margin-bottom: 2rem;
+}
+.body-conversation {
+    width: 70%;
+}
+.bottom-conversation {
+    width: 70%;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+.bottom-conversation input {
+    height: 2rem;
+    width: 94%;
+    border-radius: 12px;
+    align-self: center;
+    padding-left: 26px;
+}
