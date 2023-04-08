@@ -7,6 +7,7 @@ import conference from '../assets/conference.avif'
 import university from '../assets/university.jpg'
 import biblio from '../assets/biblio.jpg'
 import {FaArrowLeft,FaArrowRight} from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom';
 
 class HomeBody extends React.Component {
     constructor(props){
@@ -41,7 +42,9 @@ class HomeBody extends React.Component {
                 vos horizons avec notre communauté
                 d'étudiants internationaux !
             </p>
-            <button className='btn'>Témoignages</button>
+            <Link to='/temoignages'>
+                <button className='btn'>Témoignages</button>
+            </Link>
         </div>
         <div className='right'>
             <div className='arrowleft'>

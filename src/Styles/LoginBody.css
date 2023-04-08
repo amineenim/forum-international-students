@@ -14,7 +14,11 @@
     flex-direction: column;
     align-items: center;
     background-color: rgb(255, 241, 224);
-    width: 30%;
+    width: 40%;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border : solid black 2px;
+    border-bottom: none;
 }
 .auth-google {
     display: flex;
@@ -45,6 +49,7 @@
     border-left: solid gray 0.3px;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    cursor: pointer;
 }
 .middle {
     display: flex;
@@ -66,9 +71,13 @@
     width: 100%;
 }
 .lower {
-    width: 30%;
+    width: 40%;
     padding : 2rem 0;
     background-color: rgb(255, 241, 224);
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border : solid black 2px;
+    border-top: none;
 }
 form {
     display: flex;
@@ -76,20 +85,23 @@ form {
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
+    width: 60%;
 }
 .form .row1, .form .row2 {
     display: flex;
     flex-direction: column;
     padding : 1rem 0;
+    width: 100%;
 }
 .form input {
     height: 1.8rem;
-    width: 20rem;
+    width: 26rem;
     border : black solid 0.8px;
     padding-left : 1rem;
     margin-top : 2px;
     margin-bottom: 0.4px;
     border-radius: 8px;
+
 }
 .submit-btn {
     height: 2rem;
@@ -99,6 +111,8 @@ form {
     background-color: gray;
     border: solid white 1px;
     border-radius: 10px;
+    cursor: pointer;
+    width: 50%;
 }
 .password-forgotten{
     text-decoration: underline;

@@ -13,6 +13,11 @@
     background-color: rgb(255, 241, 224);
     flex-direction: column;
     align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border : solid black 2px;
+    border-bottom: none;
+    width: 43%;
 }
 .registration-head h3 {
     text-decoration: underline;
@@ -28,7 +33,11 @@
     align-items: center;
     justify-content: center;
     padding : 0rem 0;
-    height: 100%;
+    height:60%;
+    border : solid black 2px;
+    border-bottom-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top: none;
 }
 .registration-foot form div {
     display: flex;
@@ -49,7 +58,7 @@ form label {
 
 form input {
     height: 1.8rem;
-    width: 16rem;
+    width: 22rem;
     border: gray solid 1px;
     border-radius: 8px;
     margin-top : 0.3rem;
@@ -58,7 +67,7 @@ form input {
 
 .register-btn {
     height: 2rem;
-    width: 70%;
+    width: 50%;
     margin : 1rem 0;
     font-size: 1rem;
     font-weight: bold;
@@ -66,6 +75,7 @@ form input {
     border-radius: 8px;
     box-shadow: 6px 6px;
     align-self: center;
+    cursor: pointer;
 }
 .error-text {
     color: red;

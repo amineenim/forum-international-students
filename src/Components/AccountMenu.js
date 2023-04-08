@@ -4,6 +4,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {FaUserAlt} from 'react-icons/fa'
+import { NavLink } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -47,8 +48,12 @@ export default function AccountMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>se connecter</MenuItem>
-        <MenuItem onClick={handleClose}>créer un compte</MenuItem>
+        <NavLink to='/login'>
+          <MenuItem onClick={handleClose}>se connecter</MenuItem>
+        </NavLink>
+        <NavLink to='/register'>
+          <MenuItem onClick={handleClose}>créer un compte</MenuItem>
+        </NavLink>
         
       </Menu>
     </div>

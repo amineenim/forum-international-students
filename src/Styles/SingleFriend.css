@@ -3,11 +3,12 @@
 .single-friend {
     display: flex;
     align-items: center;
-    width: 90%;
-    background-color: blue;
+    width: 100%;
+    background-color: rgb(43, 42, 42);
     justify-content: space-between;
     padding: 0.3rem 1rem;
     border :solid black 2px;
+    color: white;
     cursor: pointer;
     height: fit-content;
     border-radius: 10px;
@@ -23,7 +24,6 @@
 }
 .profile-avatar div  {
     z-index: 9;
-    background-color: red;
     height: 0.6rem;
     width: 0.6rem;
     border: solid black 2px;
@@ -43,6 +43,6 @@
     background-color: rgb(163, 161, 161);
 }
 .single-friend p {
-    font-size: 16px;
-    font-weight: 400;
+    font-size: 18px;
+    font-weight: 300;
 }

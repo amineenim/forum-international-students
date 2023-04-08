@@ -4,19 +4,32 @@
     justify-content: space-evenly;
     padding : 4rem 1.6rem;
     height: 100vh;
+    background-image: url('../assets/bg-university.avif');
 }
 
-.left {
+.home-body .left {
     display: flex;
     flex-direction: column;
     max-width: 40%;
     align-items: center;
     justify-content: center;
+    background-color: bisque;
+    height: fit-content;
+    align-self: center;
+    padding: 2rem;
+    border: solid black 2px;
+    border-radius: 12px;
 }
-.right {
+.home-body .right {
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: bisque;
+    height: fit-content;
+    align-self: center;
+    padding: 2rem;
+    border: solid black 2px;
+    border-radius: 12px;
 }
 .right img {
     border: solid gray 1px;
@@ -35,9 +48,11 @@
     font-size: 1.6rem;
 }
 .btn {
-    height: 2rem;
     font-size: 1.2rem;
-    background: rgb(102, 26, 26);
+    background: gray;
     color: white;
-    padding : 0.2rem 0.6rem;
+    padding : 1rem ;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 2rem;
 }
