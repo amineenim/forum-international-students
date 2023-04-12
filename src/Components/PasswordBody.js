@@ -32,11 +32,11 @@ const ChangePasswordPage = () => {
     event.preventDefault();
     if (oldPassword.trim() === '') {
       setOldPasswordError(true);
-      
+
     }
     if (newPassword.trim() === '') {
       setNewPasswordError(true);
-      
+
     }
     if (confirmPassword.trim() === '') {
       setConfirmPasswordError(true);
@@ -56,25 +56,28 @@ const ChangePasswordPage = () => {
   return (
     <div
       style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
         backgroundImage: `url(${UniversityImage})`,
         height: '100vh',
-        backgroundSize: 'cover',
+        padding: '2rem'
+
+
 
       }}>
       <div style={{
         backgroundColor: 'rgb(255, 241, 224)',
-        width: '60%',
-        margin: 'auto'
-
+        borderTopLeftRadius: '12px',
+        borderTopRightRadius: '12px',
+        border: 'solid black 2px',
+        width: '50%'
 
       }}>
         <div style={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-
-
-
         }}>
           <Typography variant="h5" style={{ marginBottom: 10 }}>Changer de mot de passe</Typography>
           <form onSubmit={handleSubmit}>
@@ -86,7 +89,7 @@ const ChangePasswordPage = () => {
               margin="normal"
               error={oldPasswordError}
               helperText={oldPasswordError ? 'Le mot de passe actuel est obligatoire' : ''}
-              
+
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

@@ -53,7 +53,7 @@ export default function ConatctBody() {
     }
     if (message.trim() === '') {
       setMessageError(true);
-        return;
+      return;
     }
   };
 
@@ -63,11 +63,12 @@ export default function ConatctBody() {
         <CssBaseline />
         <Box
           sx={{
-
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             backgroundImage: `url(${UniversityImage})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '100vh'
+            height: '100vh',
+            padding: '2rem'
           }}
         >
           <Box
@@ -77,103 +78,108 @@ export default function ConatctBody() {
               flexDirection: 'column',
               alignItems: 'center',
               backgroundColor: 'rgb(255, 241, 224)',
+              borderTopLeftRadius: '12px',
+              borderTopRightRadius: '12px',
+              border : 'solid black 2px',
+              width: '50%'
+              
 
             }}
           >
-            <Typography component="h1" variant="h5">
-              Contactez nous
-            </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
-              <Grid container spacing={3}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    autoComplete="given-name"
-                    name="name"
-                    value={name}
-                    onChange={handleNameChange}
-                    fullWidth
-                    id="name"
-                    label="Nom"
-                    autoFocus
-                    InputProps={{
-                      style: {
+          <Typography component="h1" variant="h5">
+            Contactez nous
+          </Typography>
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
+            <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="given-name"
+                  name="name"
+                  value={name}
+                  onChange={handleNameChange}
+                  fullWidth
+                  id="name"
+                  label="Nom"
+                  autoFocus
+                  InputProps={{
+                    style: {
 
-                        backgroundColor: 'white',
-                      },
-                    }}
-                    error={nameError}
-                    helperText={nameError ? 'Le nom est obligatoire' : ''}
-                    onBlur={() => {
-                      if (name.trim() === '') {
-                        setNameError(true);
-                      }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    id="email"
-                    label="Adresse mail"
-                    name="email"
-                    value={email}
-                    onChange={handleEmailChange}
-                    autoComplete="family-name"
-                    InputProps={{
-                      style: {
-
-                        backgroundColor: 'white',
-                      },
-                    }}
-                    error={emailError}
-                    helperText={emailError ? "L'adresse mail est obligatoire" : ''}
-                    onBlur={() => {
-                      if (email.trim() === '') {
-                        setEmailError(true);
-                      }
-                    }}
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    id="message"
-                    label="Message"
-                    name="message"
-                    value={message}
-                    onChange={handleMessageChange}
-                    autoComplete="message"
-                    multiline
-                    rows={4}
-                    InputProps={{
-                      style: {
-
-                        backgroundColor: 'white',
-                      },
-                    }}
-                    error={messageError}
-                    helperText={messageError ? 'Le message est obligatoire' : ''}
-                    onBlur={() => {
-                      if (message.trim() === '') {
-                        setMessageError(true);
-                      }
-                    }}
-                  />
-                </Grid>
-
-
+                      backgroundColor: 'white',
+                    },
+                  }}
+                  error={nameError}
+                  helperText={nameError ? 'Le nom est obligatoire' : ''}
+                  onBlur={() => {
+                    if (name.trim() === '') {
+                      setNameError(true);
+                    }
+                  }}
+                />
               </Grid>
-              <Button
-                type="submit"
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Envoyer
-              </Button>
-            </Box>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  fullWidth
+                  id="email"
+                  label="Adresse mail"
+                  name="email"
+                  value={email}
+                  onChange={handleEmailChange}
+                  autoComplete="family-name"
+                  InputProps={{
+                    style: {
+
+                      backgroundColor: 'white',
+                    },
+                  }}
+                  error={emailError}
+                  helperText={emailError ? "L'adresse mail est obligatoire" : ''}
+                  onBlur={() => {
+                    if (email.trim() === '') {
+                      setEmailError(true);
+                    }
+                  }}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  fullWidth
+                  id="message"
+                  label="Message"
+                  name="message"
+                  value={message}
+                  onChange={handleMessageChange}
+                  autoComplete="message"
+                  multiline
+                  rows={4}
+                  InputProps={{
+                    style: {
+
+                      backgroundColor: 'white',
+                    },
+                  }}
+                  error={messageError}
+                  helperText={messageError ? 'Le message est obligatoire' : ''}
+                  onBlur={() => {
+                    if (message.trim() === '') {
+                      setMessageError(true);
+                    }
+                  }}
+                />
+              </Grid>
+
+
+            </Grid>
+            <Button
+              type="submit"
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Envoyer
+            </Button>
           </Box>
         </Box>
-      </Container>
-    </ThemeProvider>
+      </Box>
+    </Container>
+    </ThemeProvider >
   );
 }
