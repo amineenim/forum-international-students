@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import UniversityImage from '../assets/bg-university.avif';
+import { Helmet } from 'react-helmet';
 
 const theme = createTheme({
   palette: {
@@ -59,6 +60,9 @@ export default function ConatctBody() {
 
   return (
     <ThemeProvider theme={theme}>
+      <Helmet>
+        <title>TOGETHER | Contact</title>
+      </Helmet>
       <Container component="main" maxWidth="m">
         <CssBaseline />
         <Box

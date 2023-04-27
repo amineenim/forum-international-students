@@ -6,6 +6,7 @@ import OnlineFriends from './OnlineFriends'
 import OutFriends from './OutFriends'
 import { AiOutlineSearch } from "react-icons/ai";
 import Discussion from './Discussion';
+import { Helmet } from 'react-helmet';
 const testdata = {
     friends : [
         {
@@ -42,6 +43,9 @@ function MessagerieBody() {
     const [user, setUser] = useState(null)
   return (
     <div className='messagerie-container'>
+        <Helmet>
+            <title>TOGETHER | Messages</title>
+        </Helmet>
         <div className='discussion'>
             <Discussion user={user} />
         </div>

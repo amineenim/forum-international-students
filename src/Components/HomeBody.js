@@ -8,6 +8,7 @@ import university from '../assets/university.jpg'
 import biblio from '../assets/biblio.jpg'
 import {FaArrowLeft,FaArrowRight} from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 class HomeBody extends React.Component {
     constructor(props){
@@ -31,6 +32,9 @@ class HomeBody extends React.Component {
     render(){
   return (
     <div className='home-body'>
+        <Helmet>
+            <title>TOGETHER | Accueil</title>
+        </Helmet>
         <div className='left'>
             <h2>Votre réussite académique à portée de main,
                 où que vous soyez dans le monde !
