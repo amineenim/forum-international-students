@@ -12,8 +12,13 @@ class ForumHomeBody extends React.Component {
     state = {
         categories: [],
         forums: [],
-        isNewForum: false
+        isNewForum: false,
+        titre: "",
+        categorie: "",
+        contenu:""
     }
+
+    userInfo = JSON.parse(localStorage.getItem("current_user"))
 
     constructor(props){
         super(props)
@@ -41,7 +46,30 @@ class ForumHomeBody extends React.Component {
     }
 
     poster(){
-        alert(0)
+        const titre = document.getElementById("titre")
+        const code_categorie = document.getElementById("categorie")
+        const id_user = this.userInfo.id
+        const contenu = document.getElementById("contenu")
+        const data = {
+            "titre": titre.value,
+            "code_categorie": code_categorie.value,
+            "id_user": id_user,
+            "contenu": contenu.value
+        }
+        ApiService.post("/forums/", data)
+            .then( response => {
+                this.setState({isNewForum : false})
+                titre.value = ""
+                code_categorie.value = ""
+                contenu.value = ""
+            })
+    }
+
+    retour(){
+        this.setState({isNewForum : false})
+        document.getElementById("categorie").value = ""
+        document.getElementById("contenu").value = ""
+        document.getElementById("titre").value = ""
     }
     render(){
         return (
@@ -56,7 +84,7 @@ class ForumHomeBody extends React.Component {
                     <div className='w-[99%] pt-6'>
                         <div className='px-10'>
                             <div className='justify-end items-end text-right'>
-                                <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 color-primary-2 px-2 py2 rounded-3xl h-10 underline font-semibold'>
+                                <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 underline font-semibold'>
                                     <span>Créer un nouveau poste</span>
                                 </button>
                             </div>
@@ -112,7 +140,7 @@ class ForumHomeBody extends React.Component {
                             <span>Catégorie *</span>
                         </div>
                         <div className='w-full'>
-                            <select placeholder='Sélectionnez' className='w-full px-4 py-2 border-2 border-color-sixth rounded-3xl'>
+                            <select id='categorie' name='categorie' placeholder='Sélectionnez' className='w-full px-4 py-2 border-2 border-color-sixth rounded-3xl'>
                             <option value="">Sélectionnez</option>
                             { 
                                 this.state.categories.map((option, index) => (
@@ -125,18 +153,21 @@ class ForumHomeBody extends React.Component {
                             <span>Titre *</span>
                         </div>
                         <div className='w-full'>
-                            <input placeholder='Titre du poste' className='w-full px-4 py-2 border-2 border-color-sixth'  />
+                            <input id='titre' name='titre' placeholder='Titre du poste' className='w-full px-4 py-2 border-2 border-color-sixth'  />
                         </div>
                         <div className='font-extrabold mt-4 mb-2 text-xl'>
                             <span>Texte *</span>
                         </div>
                         <div className='w-full'>
-                            <textarea placeholder='Développez vos besoins...' className='w-full min-h-[200px] p-4 border-2 border-color-sixth'>
+                            <textarea id='contenu' name='contenu' placeholder='Développez vos besoins...' className='w-full min-h-[200px] p-4 border-2 border-color-sixth'>
 
                             </textarea>
                         </div>
-                        <div>
-                            <button onClick={() => this.poster()} className='bg-color-primary-1 color-primary-2 px-5 py2 rounded-3xl h-10 font-semibold w-36 text-xl mt-8'>
+                        <div className='flex'>
+                            <button onClick={() => this.retour()} className='mr-4 bg-color-primary-2 bg-color-secondary-hover color-primary-1 color-primary-2-hover border-2 border-color-primary-1 px-5 py2 rounded-3xl h-10 font-semibold w-36 text-xl mt-8'>
+                                <span>Annuler</span>
+                            </button>
+                            <button onClick={() => this.poster()} className='bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-5 py2 rounded-3xl h-10 font-semibold w-36 text-xl mt-8'>
                                 <span>Poster</span>
                             </button>
                         </div>
