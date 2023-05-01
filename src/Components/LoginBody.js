@@ -5,6 +5,7 @@ import '../Styles/LoginBody.css'
 import {FcGoogle} from 'react-icons/fc'
 import { FaLock } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
+import { Helmet } from 'react-helmet';
 
 function LoginBody() {
     // destructring the object
@@ -18,6 +19,9 @@ function LoginBody() {
     }
   return (
     <div className='login-container'>
+        <Helmet>
+            <title>TOGETHER | Connexion</title>
+        </Helmet>
         <div className='upper'>
             <h2>Se Connecter</h2>
             <h3>Pas encore de compte ? s'inscrire</h3>

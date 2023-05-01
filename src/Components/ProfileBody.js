@@ -7,10 +7,14 @@ import profileImge from '../assets/profiles/student1.jpg'
 import {BsFillFilePersonFill} from 'react-icons/bs';
 import {RiLockPasswordFill} from 'react-icons/ri';
 import {FiLogOut} from 'react-icons/fi'
+import { Helmet } from 'react-helmet';
 
 function ProfileBody() {
   return (
     <div className='profile-container'>
+        <Helmet>
+            <title>TOGETHER | Profil</title>
+        </Helmet>
         <div className='left-section'>
             <Profile
             image={profileImge}

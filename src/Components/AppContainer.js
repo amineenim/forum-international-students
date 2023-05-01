@@ -10,11 +10,16 @@ import Home from '../pages/Home';
 import Messagerie from '../pages/Messagerie';
 import Contact from '../pages/Contact';
 import Password from '../pages/Password';
+import { Helmet } from 'react-helmet';
+import ForumHome from "../pages/ForumHome";
 
 
 function AppContainer() {
   return (
     <Router>
+      <Helmet>
+        <title>TOGETHER</title>
+      </Helmet>
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login />} />
@@ -25,7 +30,9 @@ function AppContainer() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/post' element={<Post />} />
         <Route path='/messages' element={<Messagerie />} />
-       <Route path='/password' element={<Password />} />
+        <Route path='/changePassword' element={<Password />} />
+        <Route path='/forum' element={<ForumHome />} />
+       
       </Routes>
     </Router>
   )

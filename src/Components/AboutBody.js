@@ -1,9 +1,13 @@
 import React from 'react';
 import exampleImage from '../assets/students-globe.jpg';
+import { Helmet } from 'react-helmet';
 
 const ImageAndText = () => {
   return (
     <div style={{ display: 'flex' }}>
+      <Helmet>
+        <title>TOGETHER | A propos</title>
+      </Helmet>
       <div style={{ flex: 1, marginTop : 30 }}>
         <img src={exampleImage} alt="Library" style={{ maxWidth: '70%', marginLeft: 50 }} />
       </div>
