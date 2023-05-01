@@ -7,6 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ApiService } from "../Services/ApiService";
 import AuthService from '../Services/AuthService';
+import commentImg from '../assets/comment.png';
+import flagImg from '../assets/flag-solid.svg';
 
 class ForumHomeBody extends React.Component {
     state = {
@@ -15,7 +17,8 @@ class ForumHomeBody extends React.Component {
         isNewForum: false,
         titre: "",
         categorie: "",
-        contenu:""
+        contenu:"",
+        tabs : "new_reply",
     }
 
     userInfo = JSON.parse(localStorage.getItem("current_user"))
@@ -71,6 +74,10 @@ class ForumHomeBody extends React.Component {
         document.getElementById("contenu").value = ""
         document.getElementById("titre").value = ""
     }
+
+    changeTab(tab){
+        this.setState({tabs : tab})
+    }
     render(){
         return (
             <div>
@@ -82,7 +89,7 @@ class ForumHomeBody extends React.Component {
                     </Helmet>
     
                     <div className='w-[99%] pt-6'>
-                        <div className='px-10'>
+                        <div className='px-[6%]'>
                             <div className='justify-end items-end text-right'>
                                 <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 underline font-semibold'>
                                     <span>Créer un nouveau poste</span>
@@ -100,7 +107,7 @@ class ForumHomeBody extends React.Component {
                                     Consultez la Foire aux questions avant de la poster ici !
                                 </p>
                             </div>
-                            <div className='bg-color-primary-2 px-10 mt-8 rounded-md py-8'>
+                            <div className='bg-color-primary-2 px-[1%] mt-8 rounded-md py-8'>
                                 <div className='text-color-principal font-bold'>
                                     <h5>Sujet : Nouveau à l'Université de Corse ? Commencez ici</h5>
                                 </div>
@@ -119,7 +126,7 @@ class ForumHomeBody extends React.Component {
                         </div>
                     </div>
                     <div className='w-full bg-color-primary-2 mt-10 py-2'>
-                        <div className='w-[99%] px-10'>
+                        <div className='w-[99%] px-[6%]'>
                             <div className='w-full'>
                                 <select className='w-full px-2 p-2 border-2 border-color-sixth'>
                                 { 
@@ -129,10 +136,54 @@ class ForumHomeBody extends React.Component {
                                 }
                                 </select>
                             </div>
+                            <div className='flex mt-6 border-b-4 w-full border-text-color-principal'>
+                                <div onClick={() => this.changeTab('new_reply')} className={`${this.state.tabs == 'new_reply' ? 'border-b-8 font-bold' : ''} mr-4 cursor-pointer border-color-primary-1 text-xl`}>Réponses récentes</div>
+                                <div onClick={() => this.changeTab('new_forum')} className={`${this.state.tabs == 'new_forum' ? 'border-b-8 font-bold' : ''} mr-4 cursor-pointer border-color-primary-1 text-xl`}>Nouvellement créées</div>
+                                <div onClick={() => this.changeTab('most_reply')} className={`${this.state.tabs == 'most_reply' ? 'border-b-8 font-bold' : ''} mr-4 cursor-pointer border-color-primary-1 text-xl`}>Plus de reponses</div>
+                            </div>
+                            <div className='mt-4 pb-16'>
+                                { 
+                                    this.state.forums.map((option, index) => (
+                                        <div className="grid grid-cols-2 grid-rows-2 gap-4 mb-2 border-b-2 border-text-color-principal pb-8">
+                                            <div className="">
+                                                <div className='font-semibold flex'>
+                                                    <div className='mr-2'>
+                                                        <img src={option.imageUrl} alt="" className="profile-picture" />
+                                                    </div>
+                                                    <div>
+                                                        <div>
+                                                            <span>{option.name} ({option.pays}) - {option.filiere}</span>
+                                                        </div>
+                                                        <div>
+                                                            <span>{option.createdAt}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                            </div>
+                                            <div className="flex text-right items-end justify-end">
+                                                <div><img title='Reporter' className='h-6 w-6 cursor-pointer' src={flagImg} /></div>
+                                            </div>
+                                            <div className="">
+                                                <div className='uppercase text-xl font-semibold flex items-center'>
+                                                    <div style={{ backgroundColor: option.color }} className='h-4 w-4'></div>
+                                                    <div className='ml-2'>
+                                                        <span>{option.libelle_categorie}</span>
+                                                    </div>
+                                                </div>
+                                                <div className='font-extrabold underline'><span>{option.titre}</span></div>
+                                            </div>
+                                            <div className="flex text-right items-end justify-end">
+                                                <div><img title='Commenter' className='cursor-pointer' src={commentImg}  alt='Commenter'/></div>
+                                            </div>
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
-                    </div>  
+                    </div> 
                 </div>) :
-                    (<div className='px-10 pb-10'>
+                    (<div className='px-[6%] pb-10'>
                         <div className='text-4xl font-bold'>
                             <span>Nouveau Poste</span>
                         </div>
