@@ -25,7 +25,7 @@ function AppContainer() {
         <Route path='/contact' element={<Contact />} />
         <Route path='/post' element={<Post />} />
         <Route path='/messages' element={<Messagerie />} />
-       
+       <Route path='/password' element={<Password />} />
       </Routes>
     </Router>
   )
