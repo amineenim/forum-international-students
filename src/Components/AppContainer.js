@@ -12,6 +12,7 @@ import Contact from '../pages/Contact';
 import Password from '../pages/Password';
 import { Helmet } from 'react-helmet';
 import ForumHome from "../pages/ForumHome";
+import ForumContent from "../pages/ForumContent";
 
 
 function AppContainer() {
@@ -32,6 +33,7 @@ function AppContainer() {
         <Route path='/messages' element={<Messagerie />} />
         <Route path='/changePassword' element={<Password />} />
         <Route path='/forum' element={<ForumHome />} />
+        <Route path='/forum/:id' element={<ForumContent />} />
        
       </Routes>
     </Router>

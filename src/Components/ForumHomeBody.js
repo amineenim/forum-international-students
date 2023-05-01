@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import '../Styles/Forum.css';
 
 import {FaArrowLeft,FaArrowRight} from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, browserHistory, NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { ApiService } from "../Services/ApiService";
 import AuthService from '../Services/AuthService';
@@ -25,6 +25,7 @@ class ForumHomeBody extends React.Component {
 
     constructor(props){
         super(props)
+        console.log(props, "props")
         // this.state = {currentImage : 0}
     }
     
@@ -171,7 +172,7 @@ class ForumHomeBody extends React.Component {
                                                         <span>{option.libelle_categorie}</span>
                                                     </div>
                                                 </div>
-                                                <div className='font-extrabold underline'><span>{option.titre}</span></div>
+                                                <div className='font-extrabold underline cursor-pointer'><NavLink to={'/forum/'+option.id}>{option.titre}</NavLink></div>
                                             </div>
                                             <div className="flex text-right items-end justify-end">
                                                 <div><img title='Commenter' className='cursor-pointer' src={commentImg}  alt='Commenter'/></div>
