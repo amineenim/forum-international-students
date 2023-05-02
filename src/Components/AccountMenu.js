@@ -5,6 +5,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import {FaUserAlt} from 'react-icons/fa'
 import { NavLink } from 'react-router-dom';
+import AuthService from '../Services/AuthService';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
     palette: {
@@ -18,12 +20,17 @@ const theme = createTheme({
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleLogOut = () => {
+    AuthService.logout()
+    navigate('/login')
+  }
   
   return (
     <div>
@@ -39,23 +46,42 @@ export default function AccountMenu() {
         <FaUserAlt/>
       </Button>
       </ThemeProvider>
-      <Menu
-        id="accont-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button',
-        }}
-      >
-        <NavLink to='/login'>
-          <MenuItem onClick={handleClose}>se connecter</MenuItem>
-        </NavLink>
-        <NavLink to='/register'>
-          <MenuItem onClick={handleClose}>créer un compte</MenuItem>
-        </NavLink>
-        
-      </Menu>
+      {
+        localStorage.getItem('jwt_token') == null && (
+          <Menu
+          id="accont-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+          >
+            <NavLink to='/login'>
+              <MenuItem onClick={handleClose}>se connecter</MenuItem>
+            </NavLink>
+            <NavLink to='/register'>
+              <MenuItem onClick={handleClose}>créer un compte</MenuItem>
+            </NavLink>
+          </Menu>
+        )
+      }
+      {
+        localStorage.getItem('jwt_token') != null && (
+          <Menu
+          id="accont-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-button',
+          }}
+          >
+             <MenuItem onClick={handleLogOut}>se déconnecter</MenuItem> 
+          </Menu>
+        )
+      }
+      
     </div>
   );
 }
