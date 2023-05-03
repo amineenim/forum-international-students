@@ -90,7 +90,7 @@ class ForumHomeBody extends React.Component {
                     </Helmet>
     
                     <div className='w-[99%] pt-6'>
-                        <div className='px-[6%]'>
+                        <div className='px-[10%]'>
                             <div className='justify-end items-end text-right'>
                                 <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 underline font-semibold'>
                                     <span>Créer un nouveau poste</span>
@@ -127,7 +127,7 @@ class ForumHomeBody extends React.Component {
                         </div>
                     </div>
                     <div className='w-full bg-color-primary-2 mt-10 py-2'>
-                        <div className='w-[99%] px-[6%]'>
+                        <div className='w-[99%] px-[10%]'>
                             <div className='w-full'>
                                 <select className='w-full px-2 p-2 border-2 border-color-sixth'>
                                 { 
@@ -184,7 +184,7 @@ class ForumHomeBody extends React.Component {
                         </div>
                     </div> 
                 </div>) :
-                    (<div className='px-[6%] pb-10'>
+                    (<div className='px-[10%] pb-10'>
                         <div className='text-4xl font-bold'>
                             <span>Nouveau Poste</span>
                         </div>

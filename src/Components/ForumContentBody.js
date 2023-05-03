@@ -163,7 +163,7 @@ class ForumContentBody extends React.Component {
                                         <label className='text-xl'>Trier par</label>
                                     </div>
                                     <div className='ml-4'>
-                                        <select className='text-xl py-2 px-3 rounded-3xl bg-[#f0f0f0] text-[#9c97a0]'>
+                                        <select className='text-xl py-2 px-3 rounded-3xl bg-[#f0f0f0] text-[#9c97a0] cursor-pointer'>
                                             <option value="ASC">Plus ancien</option>
                                             <option value="DESC">Plus récent</option>
                                         </select>
