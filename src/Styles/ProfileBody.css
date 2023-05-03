@@ -101,7 +101,6 @@
     background-color: red;
 }
 .form-update-userprofile {
-    background-color: gray;
     width: fit-content;
 }
 .form-update-userprofile .row {
@@ -116,6 +115,7 @@
 .form-update-userprofile .row button {
     background-color: rgb(27, 26, 26);
     color: white;
+    width: 8rem;
     padding: 1rem;
     border-radius: 8px;
     border : solid white 2px;
@@ -133,6 +133,48 @@
     border : solid green 1px;
     margin-bottom: 3rem;
 }
+.error-update-profile {
+    display:  flex;
+    align-items: center;
+    padding: 2rem 1rem;
+    background-color: rgb(240, 106, 106);
+    justify-content: space-between;
+    width: 40%;
+    border-radius: 10px;
+    border : solid rgb(240, 106, 106) 1px;
+    margin-bottom: 3rem;
+}
+.error-update-profile span {
+    cursor: pointer;
+}
 .notification-update-profile span {
+    cursor: pointer;
+}
+.update-password-user {
+    display: flex;
+    flex-direction: column;
+}
+.update-password-user .row {
+    margin-bottom: 0.5rem;
+    height: fit-content;
+    width: 100%;
+}
+.update-password-user .row input {
+    width: 100%;
+}
+.update-password-user .last-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.update-password-user .last-row button {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    align-self: center;
+    margin-top: 2rem;
+    width: 8rem;
     cursor: pointer;
 }
