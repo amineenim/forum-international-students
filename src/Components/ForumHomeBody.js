@@ -91,7 +91,7 @@ class ForumHomeBody extends React.Component {
     
                     <div className='w-[99%] pt-6'>
                         <div className='px-[10%]'>
-                            <div className='justify-end items-end text-right'>
+                            <div className='justify-end items-end text-right mb-[4%]'>
                                 <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 underline font-semibold'>
                                     <span>Créer un nouveau poste</span>
                                 </button>
@@ -145,8 +145,8 @@ class ForumHomeBody extends React.Component {
                             <div className='mt-4 pb-16'>
                                 { 
                                     this.state.forums.map((option, index) => (
-                                        <div className="grid grid-cols-2 grid-rows-2 gap-4 mb-2 border-b-2 border-text-color-principal pb-8">
-                                            <div className="">
+                                        <div className="grid grid-cols-5 grid-rows-2 gap-2 mb-[2%] border-b-2 border-text-color-principal pb-[4%]">
+                                            <div className="col-span-4">
                                                 <div className='font-semibold flex'>
                                                     <div className='mr-2'>
                                                         <img src={option.imageUrl} alt="" className="profile-picture" />
@@ -160,12 +160,11 @@ class ForumHomeBody extends React.Component {
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                             </div>
-                                            <div className="flex text-right items-end justify-end">
-                                                <div><img title='Reporter' className='h-6 w-6 cursor-pointer' src={flagImg} /></div>
+                                            <div className='flex'>
+                                                <div className='flex items-center justify-end w-full'><img title='Reporter' className='h-6 w-6 cursor-pointer' src={flagImg} /></div>
                                             </div>
-                                            <div className="">
+                                            <div className="col-span-4">
                                                 <div className='uppercase text-xl font-semibold flex items-center'>
                                                     <div style={{ backgroundColor: option.color }} className='h-4 w-4'></div>
                                                     <div className='ml-2'>
@@ -174,8 +173,8 @@ class ForumHomeBody extends React.Component {
                                                 </div>
                                                 <div className='font-extrabold underline cursor-pointer'><NavLink to={'/forum/'+option.id}>{option.titre}</NavLink></div>
                                             </div>
-                                            <div className="flex text-right items-end justify-end">
-                                                <div><img title='Commenter' className='cursor-pointer' src={commentImg}  alt='Commenter'/></div>
+                                            <div className='flex'>
+                                                <div className='flex items-center justify-end w-full'><NavLink to={'/forum/'+option.id}><img title='Commenter' className='cursor-pointer' src={commentImg}  alt='Commenter'/></NavLink></div>
                                             </div>
                                         </div>
                                     ))
