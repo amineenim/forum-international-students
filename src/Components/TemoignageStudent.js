@@ -1,6 +1,5 @@
 
 
-import { fireEvent } from '@testing-library/react';
 import React, { startTransition } from 'react';
 import {FaStar} from 'react-icons/fa';
 
@@ -10,6 +9,9 @@ function TemoignageStudent(props) {
   return (
     <div className='temoignage-student'>
         <img src={props.image} alt="image-student"/>
+        <h4 className='temoignage-owner'>
+            {props.owner}
+        </h4>
         <p className='testimony'>
             {props.content}
         </p>

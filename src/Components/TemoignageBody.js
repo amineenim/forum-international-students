@@ -1,23 +1,51 @@
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/TemoignageBody.css'
 import TemoignageStudent from './TemoignageStudent'
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 import { Helmet } from 'react-helmet';
-const temoignagesData = [{
-    image : require("../assets/profiles/student1.jpg"),
-    text : "Le forum est incroyablement utile. J'ai pu poser mes questions sur les études à l'étranger et obtenir des réponses utiles de la part d'autres étudiants. Cela m'a aidé à mieux comprendre les défis que je pourrais rencontrer et à me sentir plus confiant dans ma décision de partir étudier à l'étranger.",
-    rating : 4
-},{
-    image : require("../assets/profiles/student2.png"),
-    text :  "le forum est excellent",
-    rating : 3
-}]
+import { ApiService } from '../Services/ApiService';
+
 
 function TemoignageBody() {
+    const [temoignagesData, setTemoignagesData] = useState([])
+    useEffect(() => {
+        const makeApiCall = async() => {
+            try {
+                const response = await ApiService.get('/temoignages/')
+                if(response.statusText === "OK" && response.status=== 200){
+                    response.data && setTemoignagesData(response.data.data)
+                    console.log(response.data.data.length)
+                }
+            } catch (error) {
+                console.log(error)
+                console.log('err')
+            }
+        }
+        makeApiCall()
+    }, [])
     // state that holds the current testimony being displayed
     const [currentTestimony, setCurrentTestimony]= useState(0)
+    // function that handles navigating between different testimonials 
+    const incrementTestimonials = (previousValue) => {
+        if(previousValue < temoignagesData.length - 1)
+        {
+            setCurrentTestimony(previousValue + 1)
+        }else 
+        {
+            setCurrentTestimony(temoignagesData.length - 1)
+        }
+    }
+    const decrementTestimonials = (previousValue) => {
+        if(previousValue > 0)
+        {
+            setCurrentTestimony(previousValue - 1)
+        }else 
+        {
+            setCurrentTestimony(0)
+        }
+    }
     return (
         <div className='temoignage-container'>
             <Helmet>
@@ -27,8 +55,9 @@ function TemoignageBody() {
                 if(index === currentTestimony){
                     return (
                         <TemoignageStudent 
-                        key={index}
-                        image = {temoignage.image}
+                        key={temoignage.id}
+                        owner = {temoignage.name}
+                        image = {temoignage.imageUrl}
                         content = {temoignage.text}
                         rating = {temoignage.rating}
                         />
@@ -38,12 +67,12 @@ function TemoignageBody() {
             <div className='skip'>
                 <div className='left'>
                     <FaAngleDoubleLeft size="2rem"
-                    onClick={(prev) => {prev > 0 ? setCurrentTestimony(prev - 1) : setCurrentTestimony(0)} }
+                    onClick={() => decrementTestimonials(currentTestimony) }
                     />
                 </div>
                 <div className='right'>
                     <FaAngleDoubleRight size="2rem"
-                    onClick={(prev) => {prev < temoignagesData.length-1 ? setCurrentTestimony(prev + 1) : setCurrentTestimony(temoignagesData.length-1)} }
+                    onClick={() => incrementTestimonials(currentTestimony) }
                     />
                 </div>
             </div>

@@ -6,27 +6,38 @@
     justify-content: center;
     align-items: center;
     background-image: url("../assets/testimonial.jpg");
-    background-repeat: repeat-x;
+    background-repeat: repeat;
 }
 .temoignage-student {
     width : 80%;
     height: 70%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     align-items: center;
     padding : 0 2rem;
     font-size: 1.2rem;
+    padding: 1rem;
 }
 .temoignage-student img {
-    height: 34%;
+    height: 30%;
     border : gray solid 1px;
     border-radius: 50%;
+    margin-bottom: 2rem;
 }
 .temoignage-student p {
     max-width: 70%;
     padding : 1.5rem;
     color: white;
+}
+.temoignage-student .temoignage-owner {
+    color: white;
+    font-size:24px;
+    font-weight: bold;
+    margin-bottom: 2rem;
+}
+.temoignage-student .rating {
+    display: flex;
+    margin-top: 2rem;
 }
 .skip {
     margin : 2rem 2rem;
@@ -36,8 +47,10 @@
 .skip .left {
     background-color: brown;
     padding : 0.6rem 1rem;
+    cursor: pointer;
 }
 .skip .right {
     background-color:brown;
     padding : 0.6rem 1rem;
+    cursor: pointer;
 }

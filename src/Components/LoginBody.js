@@ -6,17 +6,33 @@ import {FcGoogle} from 'react-icons/fc'
 import { FaLock } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
 import { Helmet } from 'react-helmet';
+import AuthService from '../Services/AuthService'
+import { useNavigate } from 'react-router'
+import { delay } from 'q'
 
 function LoginBody() {
+    const navigate = useNavigate()
     // destructring the object
     const {register,handleSubmit,formState : {errors},reset} = useForm()
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
         reset({
             email : "",
             password:""
         })
+        try {
+            const response = AuthService.login(data.email, data.password)
+            console.log(response)
+            if(localStorage.getItem('jwt_token') != null){
+                navigate('/forum')
+                console.log(localStorage.getItem('jwt_token'))
+            }
+        } catch (error) {
+            console.log(error)
+        }
+        
     }
+    
   return (
     <div className='login-container'>
         <Helmet>
@@ -44,19 +60,16 @@ function LoginBody() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className='row1'>
                         <label htmlFor='email'>Email</label>
-                        <input type="email" 
+                        <input type="text" 
                         autoFocus
                         name="email"
                         id="email"
                         {...register("email",{
-                            required : true,
-                            pattern : /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
+                            required : true
                         })}
                         />
                         {errors.email && errors.email.type === "required" &&
                         (<p className='errorMsg'>The email is required !</p>)}
-                        {errors.email && errors.email.type==="pattern" &&
-                        (<p className='errorMsg'>Email is ivalid</p>)}
                     </div>
                     <div className='row2'>
                         <label htmlFor='password'>Password</label>
