@@ -16,11 +16,10 @@ function TemoignageBody() {
                 const response = await ApiService.get('/temoignages/')
                 if(response.statusText === "OK" && response.status=== 200){
                     response.data && setTemoignagesData(response.data.data)
-                    console.log(response.data.data.length)
+                    console.log(response.data.data)
                 }
             } catch (error) {
                 console.log(error)
-                console.log('err')
             }
         }
         makeApiCall()
@@ -56,7 +55,9 @@ function TemoignageBody() {
                     return (
                         <TemoignageStudent 
                         key={temoignage.id}
+                        id = {temoignage.id}
                         owner = {temoignage.name}
+                        userId = {temoignage.id_user}
                         image = {temoignage.imageUrl}
                         content = {temoignage.text}
                         rating = {temoignage.rating}
@@ -76,6 +77,7 @@ function TemoignageBody() {
                     />
                 </div>
             </div>
+            
         </div>
     )
 }

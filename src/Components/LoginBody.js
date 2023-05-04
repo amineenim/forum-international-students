@@ -8,7 +8,6 @@ import { useForm } from 'react-hook-form'
 import { Helmet } from 'react-helmet';
 import AuthService from '../Services/AuthService'
 import { useNavigate } from 'react-router'
-import { delay } from 'q'
 
 function LoginBody() {
     const navigate = useNavigate()

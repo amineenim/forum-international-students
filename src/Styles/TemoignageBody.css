@@ -8,37 +8,75 @@
     background-image: url("../assets/testimonial.jpg");
     background-repeat: repeat;
 }
-.temoignage-student {
-    width : 80%;
+.temoignage-student-big-container {
+    width : 70%;
     height: 70%;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding : 0 2rem;
+    justify-content: space-between;
+    padding : 2rem;
     font-size: 1.2rem;
+    background-color: gray;
+    border-radius: 10px;
+    border: solid white 2px;
+}
+.temoignage-student {
+   height: fit-content;
+   width: 80%;
+   display: flex;
+   height: 100%;
+   align-items: center;
+}
+.manipulate-testimonial .add-new-testimonial, .edit-testimonial, .delete-testimonial {
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 1rem;
-}
-.temoignage-student img {
-    height: 30%;
-    border : gray solid 1px;
-    border-radius: 50%;
-    margin-bottom: 2rem;
-}
-.temoignage-student p {
-    max-width: 70%;
-    padding : 1.5rem;
+    background-color: rgb(36, 30, 30);
     color: white;
+    border: solid white 2px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 0.8rem;
 }
-.temoignage-student .temoignage-owner {
+
+.data-temoignage {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 14px;
+    align-items: center;
     color: white;
-    font-size:24px;
-    font-weight: bold;
-    margin-bottom: 2rem;
+    height: fit-content;
+    padding: 2rem 0;
 }
-.temoignage-student .rating {
+.manipulate-testimonial {
+    padding: 1rem;
+    width: 24%;
+}
+.data-temoignage h4 {
+    font-size: 24px;
+}
+.data-temoignage p {
+    margin-top: 2rem;
+}
+.data-temoignage .rating {
     display: flex;
     margin-top: 2rem;
 }
+
+.temoignage-student-big-container .add-new-testimonial p {
+    margin-right: 14px;
+}
+.temoignage-student img {
+    height: 25rem;
+    border : gray solid 1px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+    border : solid white 2px;
+    width: 25rem;
+}
+
 .skip {
     margin : 2rem 2rem;
     display: flex;
@@ -52,5 +90,61 @@
 .skip .right {
     background-color:brown;
     padding : 0.6rem 1rem;
+    cursor: pointer;
+}
+.create-new-temoignage {
+    background-color: blue;
+    display: flex;
+    width: 100%;
+}
+.create-new-temoignage .row {
+    width: 80%;
+    margin-bottom: 1rem;
+}
+.create-new-temoignage .row textarea {
+    width: 100%;
+    resize: none;
+    padding: 1rem;
+    border-radius: 8px;
+    border : solid black 2px;
+}
+.create-new-temoignage .row select{
+    width: 100%;
+    padding-left: 1rem;
+    border-radius: 8px;
+    border : solid black 2px;
+}
+.create-new-temoignage label {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+.create-new-temoignage label span {
+    margin-left: 10px;
+}
+.create-new-temoignage .buttons-section {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+.create-new-temoignage .buttons-section button {
+    background-color: black;
+    padding: 1rem;
+    color: white;
+    border : white solid 2px;
+    border-radius: 12px;
+    width: 12rem;
+}
+.success-notification {
+    padding: 1rem ;
+    display: flex;
+    width: 40%;
+    margin-bottom: 3rem;
+    justify-content: space-between;
+    background-color: rgb(183, 236, 102);
+}
+.success-notification span {
     cursor: pointer;
 }
