@@ -34,8 +34,12 @@ class ForumHomeBody extends React.Component {
         if(categoriesResponse){
             this.setState({categories: categoriesResponse.data.data})
         }
-        
-        const forumsResponse = await ApiService.get("/forums/")
+
+        await this.getForums()
+    }
+
+    async getForums(tri="new_reply", code_categorie = ""){
+        const forumsResponse = await ApiService.get(`/forums/?tri=${tri}&code_categorie=${code_categorie}`)
         if(forumsResponse){
             this.setState({forums: forumsResponse.data.data})
         }
@@ -76,8 +80,15 @@ class ForumHomeBody extends React.Component {
         document.getElementById("titre").value = ""
     }
 
-    changeTab(tab){
+    async changeTab(tab){
         this.setState({tabs : tab})
+        const code_categorie = document.getElementById("categorie-chox").options[document.getElementById("categorie-chox").selectedIndex].value
+        await this.getForums(tab, code_categorie)
+    }
+
+    async onChangeCategorie(){
+        const code_categorie = document.getElementById("categorie-chox").options[document.getElementById("categorie-chox").selectedIndex].value
+        await this.getForums(this.state.tabs, code_categorie)
     }
     render(){
         return (
@@ -129,7 +140,7 @@ class ForumHomeBody extends React.Component {
                     <div className='w-full bg-color-primary-2 mt-10 py-2'>
                         <div className='w-[99%] px-[10%]'>
                             <div className='w-full'>
-                                <select className='w-full px-2 p-2 border-2 border-color-sixth'>
+                                <select id='categorie-chox' name='categorie-chox' onChange={() => this.onChangeCategorie()} className='w-full px-2 p-2 border-2 border-color-sixth'>
                                 <option value="">Sélectionnez</option>
                                 { 
                                     this.state.categories.map((option, index) => (
@@ -174,8 +185,9 @@ class ForumHomeBody extends React.Component {
                                                 </div>
                                                 <div className='font-extrabold underline cursor-pointer'><NavLink to={'/forum/'+option.id}>{option.titre}</NavLink></div>
                                             </div>
-                                            <div className='flex'>
+                                            <div className='flex items-center'>
                                                 <div className='flex items-center justify-end w-full'><NavLink to={'/forum/'+option.id}><img title='Commenter' className='cursor-pointer' src={commentImg}  alt='Commenter'/></NavLink></div>
+                                                <div className='text-xl font-semibold ml-2'><span>{option.comment_number}</span></div>
                                             </div>
                                         </div>
                                     ))
