@@ -15,6 +15,7 @@ import linkedInImg from '../assets/linkedin-in.svg'
 import notificationImg from '../assets/bell-solid.svg'
 import twitterImg from '../assets/twitter.svg'
 import closeImg from '../assets/circle-xmark.svg'
+import deleteImg from '../assets/delete.svg'
 
 class ForumContentBody extends React.Component {
     state = {
@@ -25,7 +26,8 @@ class ForumContentBody extends React.Component {
         categorie: "",
         contenu:"",
         tabs : "new_reply",
-        id_forum: 0
+        id_forum: 0,
+        tri : ""
     }
 
     userInfo = JSON.parse(localStorage.getItem("current_user"))
@@ -37,12 +39,12 @@ class ForumContentBody extends React.Component {
     async componentDidMount(){
         this.setState({id_forum : this.props.id})
 
-        await this.fetchData()
+        await this.fetchData(this.state.tri)
     }
 
-    async fetchData(){
+    async fetchData(tri="DESC"){
 
-        const commentsResponse = await ApiService.get(`/forum/comments/?id_forum=${this.props.id}`)
+        const commentsResponse = await ApiService.get(`/forum/comments/?id_forum=${this.props.id}&tri=${tri}`)
         if(commentsResponse){
             this.setState({comments: commentsResponse.data.data})
         }
@@ -73,7 +75,7 @@ class ForumContentBody extends React.Component {
 
         ApiService.post("/forum/comments/", data)
         .then( response => {
-            this.fetchData()
+            this.fetchData(this.state.tri)
             this.setState({isNewComment : false})
             contenu.value = ""
         })
@@ -84,6 +86,72 @@ class ForumContentBody extends React.Component {
         document.getElementById("categorie").value = ""
         document.getElementById("contenu").value = ""
         document.getElementById("titre").value = ""
+    }
+
+    checkIfLiked(list_like = ""){
+        if(list_like && list_like.length > 0){
+            list_like = JSON.parse(list_like)
+            return list_like.includes(this.userInfo.id)
+        }
+        return false
+    }
+
+    lengthLiked(list_like = ""){
+        if(list_like && list_like.length > 0){
+            list_like = JSON.parse(list_like)
+            return list_like.length
+        }
+        return 0
+    }
+
+    likeNewComment(id = ""){
+        if(id){
+            const data = {
+                "id" : id
+            }
+            ApiService.put("/forum/comments/like", data)
+            .then( response => {
+                this.fetchData(this.state.tri)
+            })
+        }
+    }
+
+    likeNewForum(id = ""){
+        if(id){
+            const data = {
+                "id" : id
+            }
+            ApiService.put("/forums/like", data)
+            .then( response => {
+                this.fetchData(this.state.tri)
+            })
+        }
+    }
+
+    supprimerCommentaire(id = ""){
+        if(id && window.confirm("Voulez-vous vraiment supprimer le commentaire ?")){
+            
+            ApiService.remove(`/forum/comments/?id=${id}`)
+            .then( response => {
+                this.fetchData(this.state.tri)
+            })
+        }
+    }
+
+    supprimerForum(id = ""){
+        if(id && window.confirm("Voulez-vous vraiment supprimer le post ?")){
+            
+            ApiService.remove(`/forums/?id=${id}`)
+            .then( response => {
+                window.location.href = "/forum"
+            })
+        }
+    }
+
+    async changeTri(){
+        const value = document.getElementById("tri").options[document.getElementById("tri").selectedIndex].value
+        this.setState({tri: value})
+        await this.fetchData(value)
     }
 
     render(){
@@ -139,8 +207,18 @@ class ForumContentBody extends React.Component {
                                 </div> */}
                                 <div className='flex'>
                                     <div className='flex items-center justify-start w-full'>
-                                        <img className='h-10 w-10 mr-4 cursor-pointer' src={lightHeart} /> 
-                                        <span className='text-xl'> {this.state.id_forum}  J'aime</span>
+                                        {
+                                            this.checkIfLiked(this.state.forums.list_like) ? 
+                                            <img onClick={() => this.likeNewForum(this.state.forums.id)} className='h-10 w-10 mr-4 cursor-pointer' src={solidHeart} /> 
+                                            :
+                                            <img onClick={() => this.likeNewForum(this.state.forums.id)} className='h-10 w-10 mr-4 cursor-pointer' src={lightHeart} /> 
+                                        }
+                                        <span className='text-xl'> {this.lengthLiked(this.state.forums.list_like)}  J'aime</span>
+                                        <div>
+                                            {
+                                                this.state.forums.id_user == this.userInfo.id ? <img onClick={() => this.supprimerForum(this.state.forums.id)} title='Supprimer le post' className='h-4 w-4 cursor-pointer ml-2' src={deleteImg} /> :""
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                                 <div className='flex'>
@@ -160,9 +238,9 @@ class ForumContentBody extends React.Component {
                                     <label className='text-xl'>Trier par</label>
                                 </div>
                                 <div className='ml-4'>
-                                    <select className='text-xl py-2 px-3 rounded-3xl bg-[#f0f0f0] text-[#9c97a0] cursor-pointer'>
-                                        <option value="ASC">Plus ancien</option>
+                                    <select id='tri' name='tri' onChange={() => this.changeTri()} value={this.state.tri} className='text-xl py-2 px-3 rounded-3xl bg-[#f0f0f0] text-[#9c97a0] cursor-pointer'>
                                         <option value="DESC">Plus récent</option>
+                                        <option value="ASC">Plus ancien</option>
                                     </select>
                                 </div>
                             </div>
@@ -190,10 +268,21 @@ class ForumContentBody extends React.Component {
                                     </div>
                                     <div className="flex text-right items-center justify-end mt-4 pr-[3%]">
                                         <div className='flex'>
-                                            <img className='h-6 w-6 mr-2 cursor-pointer' src={lightHeart} /> 
-                                            <span className=''> {(option.id) + (Math.floor(Math.random() * (15 - 3 + 1) + 3))}  J'aime</span>
+                                            {
+                                                this.checkIfLiked(option.list_like) ? 
+                                                <img onClick={() => this.likeNewComment(option.id)} className='h-6 w-6 mr-2 cursor-pointer' src={solidHeart} /> 
+                                                :
+                                                <img onClick={() => this.likeNewComment(option.id)} className='h-6 w-6 mr-2 cursor-pointer' src={lightHeart} /> 
+                                            }
+                                            
+                                            <span className=''> {this.lengthLiked(option.list_like)}  J'aime</span>
                                         </div>
                                         <div><img title='Reporter' className='h-4 w-4 cursor-pointer ml-2' src={flagImg} /></div>
+                                        <div>
+                                            {
+                                                option.id_user == this.userInfo.id ? <img onClick={() => this.supprimerCommentaire(option.id)} title='Supprimer le commentaire' className='h-4 w-4 cursor-pointer ml-2' src={deleteImg} /> :""
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             ))
