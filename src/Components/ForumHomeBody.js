@@ -104,7 +104,7 @@ class ForumHomeBody extends React.Component {
                             <div className='color-primary-2 font-semibold'>
                                 <p>
                                     Créez un réseau avec vos pairs, débattez de sujets d'actualité et échangez des connaissances 
-                                    avec d'autres uTesters. Lancez une discussion ou rejoignez-en une qui est déjà en cours. 
+                                    avec d'autres étudiants. Lancez une discussion ou rejoignez-en une qui est déjà en cours. 
                                     Consultez la Foire aux questions avant de la poster ici !
                                 </p>
                             </div>
@@ -130,6 +130,7 @@ class ForumHomeBody extends React.Component {
                         <div className='w-[99%] px-[10%]'>
                             <div className='w-full'>
                                 <select className='w-full px-2 p-2 border-2 border-color-sixth'>
+                                <option value="">Sélectionnez</option>
                                 { 
                                     this.state.categories.map((option, index) => (
                                         <option key={index} value={option.code_categorie}>{option.libelle_categorie}</option>
@@ -156,7 +157,7 @@ class ForumHomeBody extends React.Component {
                                                             <span>{option.name} ({option.pays}) - {option.filiere}</span>
                                                         </div>
                                                         <div>
-                                                            <span>{option.createdAt}</span>
+                                                            <span>{new Date(option.createdAt).toLocaleString()}</span>
                                                         </div>
                                                     </div>
                                                 </div>

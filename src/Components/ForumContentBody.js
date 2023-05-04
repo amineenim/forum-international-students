@@ -14,6 +14,7 @@ import flagImg from '../assets/flag-solid.svg';
 import linkedInImg from '../assets/linkedin-in.svg'
 import notificationImg from '../assets/bell-solid.svg'
 import twitterImg from '../assets/twitter.svg'
+import closeImg from '../assets/circle-xmark.svg'
 
 class ForumContentBody extends React.Component {
     state = {
@@ -36,6 +37,11 @@ class ForumContentBody extends React.Component {
     async componentDidMount(){
         this.setState({id_forum : this.props.id})
 
+        await this.fetchData()
+    }
+
+    async fetchData(){
+
         const commentsResponse = await ApiService.get(`/forum/comments/?id_forum=${this.props.id}`)
         if(commentsResponse){
             this.setState({comments: commentsResponse.data.data})
@@ -52,10 +58,10 @@ class ForumContentBody extends React.Component {
     }
 
     activeAddNewComment(){
-        this.setState({isNewComment : true})
+        this.setState({isNewComment : !this.state.isNewComment})
     }
 
-    commenter(){
+    async commenter(){
         const contenu = document.getElementById("contenu")
         const id_user = this.userInfo.id
         const id_forum = this.state.id_forum
@@ -65,8 +71,9 @@ class ForumContentBody extends React.Component {
             "contenu": contenu.value
         }
 
-        ApiService.post("/forums/comments", data)
+        ApiService.post("/forum/comments/", data)
         .then( response => {
+            this.fetchData()
             this.setState({isNewComment : false})
             contenu.value = ""
         })
@@ -110,7 +117,7 @@ class ForumContentBody extends React.Component {
                                                 <span>{this.state.forums.name} ({this.state.forums.pays}) - {this.state.forums.filiere}</span>
                                             </div>
                                             <div className='text-[#a398a3]'>
-                                                <span>{this.state.forums.createdAt}</span>
+                                                <span>{new Date(this.state.forums.createdAt).toLocaleString()}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +181,7 @@ class ForumContentBody extends React.Component {
                                                 <span>{option.name} ({option.pays}) - {option.filiere}</span>
                                             </div>
                                             <div className='text-[#a398a3]'>
-                                                <span>{option.createdAt}</span>
+                                                <span>{new Date(option.createdAt).toLocaleString()}</span>
                                             </div>
                                         </div>
                                     </div>
@@ -196,6 +203,26 @@ class ForumContentBody extends React.Component {
                             <button onClick={() => this.activeAddNewComment()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 font-semibold w-48'>
                                 <span>Commenter</span>
                             </button>
+                        </div>
+                        <div className={`fixed  items-center justify-center w-full h-[350px] py-[1%] bottom-0 left-0 right-0 z-50 bg-color-sixth px-[10%] animate-slide-up ${this.state.isNewComment ? '' : 'hidden'}`} >
+                            {/* Contenu de votre modal ici */}
+                            <div className='w-full h-full'>
+                                <div className='grid grid-cols-5 grid-rows-1'>
+                                    <div className='col-span-4'>
+                                        <h1 className='text-xl font-bold mb-[1%]'>Ecrivez votre commentaire : </h1>
+                                    </div>
+                                    <div className='flex justify-end'>
+                                        <img onClick={() => this.activeAddNewComment()} className='h-8 w-8 cursor-pointer' alt='Fermer' src={closeImg} title="Fermer" />
+                                    </div>
+                                </div>
+                                
+                                <textarea id='contenu' name='contenu' placeholder='Rédigez votre réponse' className='h-[70%] w-full p-4 focus:outline-none focus:ring-2'></textarea>
+                                <div className='mt-[1%] justify-center items-center text-center'>
+                                    <button onClick={() => this.commenter()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 font-semibold w-48'>
+                                        <span>Valider</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div> 

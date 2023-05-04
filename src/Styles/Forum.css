@@ -224,5 +224,20 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.3s ease-in-out;
   }
   
+  @keyframes slide-up {
+    from {
+      transform: translate(0, 100%);
+    }
+    to {
+      transform: translate(0, 0);
+      visibility: 2s;
+      display: none;
+    }
+  }
+    
