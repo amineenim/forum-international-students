@@ -13,7 +13,7 @@ import Password from '../pages/Password';
 import { Helmet } from 'react-helmet';
 import ForumHome from "../pages/ForumHome";
 import ForumContent from "../pages/ForumContent";
-
+import NotFound from '../pages/NotFound';
 
 function AppContainer() {
   return (
@@ -34,7 +34,7 @@ function AppContainer() {
         <Route path='/changePassword' element={<Password />} />
         <Route path='/forum' element={<ForumHome />} />
         <Route path='/forum/:id' element={<ForumContent />} />
-       
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   )

@@ -27,7 +27,7 @@ function LoginBody() {
                 console.log(localStorage.getItem('jwt_token'))
             }
         } catch (error) {
-            console.log(error)
+            console.log(error.response)
         }
         
     }

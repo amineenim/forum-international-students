@@ -1,0 +1,41 @@
+.not-found-body{
+    background-color: aqua;
+    height: 100vh;
+    background-image: url('../assets/notfound.gif');
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.not-found-content {
+    display: flex;
+    align-items: center;
+}
+.not-found-status {
+    font-size: 40px;
+    margin-right: 4rem;
+}
+.not-found-text {
+    display: flex;
+    font-size: 36px;
+    flex-direction: column;
+}
+.desole {
+    text-transform: uppercase;
+}
+.not-found-back {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.not-found-back div {
+    margin-right: 10px;
+}
+.vertical-line{
+    border-left: white solid 4px;
+    height: 16rem;
+    margin-right: 20px;
+}
