@@ -9,6 +9,12 @@ import { ApiService } from '../Services/ApiService';
 
 
 function TemoignageBody() {
+    // state that stores whether the data from API changed or not
+    const [hasDataChanged, setHasDataChanged] = useState(false)
+    // state that stores the length of data array 
+    const [arrayLength, setArrayLength] = useState(0)
+    // state that stores whether the user is just viewing testimonials or creating/updating a testimonial
+    const [isViewing, setIsViewing] = useState(true)
     const [temoignagesData, setTemoignagesData] = useState([])
     useEffect(() => {
         const makeApiCall = async() => {
@@ -17,13 +23,16 @@ function TemoignageBody() {
                 if(response.statusText === "OK" && response.status=== 200){
                     response.data && setTemoignagesData(response.data.data)
                     console.log(response.data.data)
+                    setHasDataChanged(false)
+                    setArrayLength(response.data.data.length)
                 }
             } catch (error) {
                 console.log(error)
             }
         }
         makeApiCall()
-    }, [])
+    }, [hasDataChanged])
+    
     // state that holds the current testimony being displayed
     const [currentTestimony, setCurrentTestimony]= useState(0)
     // function that handles navigating between different testimonials 
@@ -56,27 +65,36 @@ function TemoignageBody() {
                         <TemoignageStudent 
                         key={temoignage.id}
                         id = {temoignage.id}
+                        index = {index}
                         owner = {temoignage.name}
                         userId = {temoignage.id_user}
                         image = {temoignage.imageUrl}
                         content = {temoignage.text}
                         rating = {temoignage.rating}
+                        setCurrentTestimony = {setCurrentTestimony}
+                        setHasDataChanged = {setHasDataChanged}
+                        setIsViewing = {setIsViewing}
+                        arrayLength = {arrayLength}
                         />
                 )
                 }
             })}
-            <div className='skip'>
-                <div className='left'>
-                    <FaAngleDoubleLeft size="2rem"
-                    onClick={() => decrementTestimonials(currentTestimony) }
-                    />
-                </div>
-                <div className='right'>
-                    <FaAngleDoubleRight size="2rem"
-                    onClick={() => incrementTestimonials(currentTestimony) }
-                    />
-                </div>
-            </div>
+            {
+                isViewing && (
+                    <div className='skip'>
+                        <div className='left'>
+                            <FaAngleDoubleLeft size="2rem"
+                            onClick={() => decrementTestimonials(currentTestimony) }
+                            />
+                        </div>
+                        <div className='right'>
+                            <FaAngleDoubleRight size="2rem"
+                            onClick={() => incrementTestimonials(currentTestimony) }
+                            />
+                        </div>
+                    </div>
+                )
+            }
             
         </div>
     )

@@ -16,6 +16,15 @@ function TemoignageStudent(props) {
     // state that stores a success notification 
     const [successNotification, setSuccessNotification] = useState("")
     useEffect(() => {
+        if(sessionStorage.getItem('success')){
+            setSuccessNotification(sessionStorage.getItem('success'))
+        }else if(sessionStorage.getItem('failure')){
+            setFailureNotification(sessionStorage.getItem("failure"))
+        }
+    },[])
+    // state that stores a failure notification
+    const [failureNotification, setFailureNotification] = useState("")
+    useEffect(() => {
         if(!AuthService.isAuthenticated())
         {
             navigate('/login')
@@ -55,11 +64,13 @@ function TemoignageStudent(props) {
             console.log(response)
             if(response.status === 200 && response.statusText === "OK")
             {
-                setSuccessNotification("Témoignage Crée avec succès !")
+                props.setHasDataChanged(true)
+                sessionStorage.setItem('success',"Témoignage crée avec succès !")
                 setIsTestimonialBeingCreated(false)
+                props.setIsViewing(true)
+                props.setCurrentTestimony(props.arrayLength)
                 setValue('content',"")
                 setValue("rating","")
-                console.log('done')
             }
         } catch (error) {
             console.log(error.response)
@@ -70,19 +81,25 @@ function TemoignageStudent(props) {
     // function that handles updating a testimony 
     const handleUpdateTestimonial = async(data) => {
         try {
-            const response = await ApiService.put(`/temoignages/?id=${current_user.id}`,{
-                id : current_user.id,
+            const response = await ApiService.put(`/temoignages/`,{
+                id : props.id,
                 rating : data.rating,
                 text : data.content 
             })
             if(response.status === 200 && response.statusText === "OK")
             {
+                props.setHasDataChanged(true)
                 setSuccessNotification("Témoignage mis à jour avec succès !")
                 setIsTestimonialBeingUpdated(false)
-                // get the new data from API
+                props.setCurrentTestimony(props.index)
+                props.setIsViewing(true)
             }
         } catch (error) {
             console.log(error.response)
+            if(error.response.status === 404 && error.response.statusText === "NOT FOUND")
+            {
+                setFailureNotification("something went wrong !")
+            }
         }
     }
     // function that prefills the fields for the update testimony
@@ -102,8 +119,9 @@ function TemoignageStudent(props) {
             const response = await ApiService.remove(`/temoignages/?id=${props.id}`)
             if(response.status === 200 && response.statusText === "OK")
             {
-                setSuccessNotification("Témoignage supprimé avec succès ")
-                // get the new data from API
+                props.setHasDataChanged(true)
+                props.setCurrentTestimony(0)
+                sessionStorage.setItem('success', "Témoignage supprimé avec succès !")
             }
         } catch (error) {
             console.log(error.response)
@@ -116,7 +134,22 @@ function TemoignageStudent(props) {
                 <div className='success-notification'>
                     <p>{successNotification}</p>
                     <span
-                    onClick={() => setSuccessNotification("")}
+                    onClick={() => {
+                        setSuccessNotification("")
+                        sessionStorage.setItem('success',"")
+                    }}
+                    >
+                        <AiOutlineClose size={26} />
+                    </span>
+                </div>
+            )
+        }
+        {
+            failureNotification && (
+                <div className='failure-notification'>
+                    <p>{failureNotification}</p>
+                    <span
+                    onClick={() => setFailureNotification("")}
                     >
                         <AiOutlineClose size={26} />
                     </span>
@@ -154,6 +187,7 @@ function TemoignageStudent(props) {
                             onClick={() => {
                                 setIsTestimonialBeingCreated(true)
                                 setIsTestimonialBeingUpdated(false)
+                                props.setIsViewing(false)
                             }}
                             >
                                 <p>Ajouter Un Témoignage</p>
@@ -165,6 +199,7 @@ function TemoignageStudent(props) {
                                     onClick={() => {
                                         setIsTestimonialBeingCreated(false)
                                         setIsTestimonialBeingUpdated(true)
+                                        props.setIsViewing(false)
                                     }}
                                     >
                                         <p>Modifier </p>
@@ -235,7 +270,10 @@ function TemoignageStudent(props) {
                     <div className='buttons-section'>
                         <button type='submit'>Créer Témoignage</button>
                         <button
-                        onClick={() => setIsTestimonialBeingCreated(false)}
+                        onClick={() => {
+                            setIsTestimonialBeingCreated(false)
+                            props.setIsViewing(true)
+                        }}
                         > Annuler </button>
                     </div>
                 </form>
@@ -290,7 +328,10 @@ function TemoignageStudent(props) {
                         <div className='buttons-section'>
                             <button type='submit'>Sauvegarder</button>
                             <button
-                            onClick={() => setIsTestimonialBeingUpdated(false)}
+                            onClick={() => {
+                                setIsTestimonialBeingUpdated(false)
+                                props.setIsViewing(true)
+                            }}
                             > Annuler </button>
                         </div>
                     </form>
