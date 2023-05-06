@@ -141,7 +141,7 @@ class ForumHomeBody extends React.Component {
                         <div className='w-[99%] px-[10%]'>
                             <div className='w-full'>
                                 <select id='categorie-chox' name='categorie-chox' onChange={() => this.onChangeCategorie()} className='w-full px-2 p-2 border-2 border-color-sixth'>
-                                <option value="">Sélectionnez</option>
+                                <option value="">Toutes les catégories</option>
                                 { 
                                     this.state.categories.map((option, index) => (
                                         <option key={index} value={option.code_categorie}>{option.libelle_categorie}</option>
