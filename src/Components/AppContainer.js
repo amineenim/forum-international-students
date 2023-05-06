@@ -14,6 +14,7 @@ import { Helmet } from 'react-helmet';
 import ForumHome from "../pages/ForumHome";
 import ForumContent from "../pages/ForumContent";
 import NotFound from '../pages/NotFound';
+import Admin from '../pages/Admin';
 
 function AppContainer() {
   return (
@@ -23,6 +24,7 @@ function AppContainer() {
       </Helmet>
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Registration />} />
         <Route path='/myprofile' element={<UserProfile />} />

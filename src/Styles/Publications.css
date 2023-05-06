@@ -1,0 +1,33 @@
+
+
+.list-publications {
+    font-size: 22px;
+    border : solid black 2px;
+    padding: 2rem;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 80%;
+    align-self: center;
+}
+.list-publications table {
+    width: 100%;
+    margin : 2rem;
+    height: 30rem;
+}
+
+td .delete-post {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.pagination-nav {
+    margin-top: 2rem;
+}
+.list-publications thead {
+    background-color: gray;
+    height: 3rem;
+    border: solid black 3px;
+}

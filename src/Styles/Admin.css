@@ -1,0 +1,119 @@
+.admin-container  {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+}
+.admin-navigation-menu{
+    display: flex;
+    align-self: center;
+    padding: 2rem 0 ;
+    width: 50%;
+    justify-content: space-around;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.admin-navigation-menu div {
+    cursor: pointer;
+}
+.admin-top {
+    display: flex;
+    margin : 2rem 0;
+    justify-content: space-around;
+    height: fit-content;
+    padding: 2rem;
+    align-items: center;
+}
+.admin-top h1 {
+    font-size: 40px;
+}
+.admin-top .admin-new-user {
+    display: flex;
+    align-items: center;
+    background-color: rgb(138, 154, 247);
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.admin-top .admin-new-user p {
+    margin-left : 10px;
+    font-size: 18px;
+}
+.admin-users-type {
+    background-color: rgb(196, 195, 195);
+    width: 50%;
+    display: flex;
+    padding: 1rem;
+    justify-content: space-between;
+    border-radius: 12px;
+    align-self: center;
+}
+.total, .total-admin, .total-users {
+    display: flex;
+    border: solid black 2px;
+    padding: 1rem;
+    align-items: center;
+    font-size : 22px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.count {
+    background-color: rgb(145, 240, 145);
+    margin-left : 8px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.users-list {
+    border: solid black 2px;
+    margin : 2rem 0;
+    display: flex;
+    height: 80rem;
+    font-size: 22px;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 80%;
+    align-self: center;
+}
+.users-list table {
+    width: 80%;
+}
+
+tbody td {
+    text-align: center;
+}
+td .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+td .actions p {
+    cursor: pointer;
+}
+.pagination-nav {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    align-self: center;
+    font-size: 22px;
+   
+}
+.actual-page {
+    margin : 0 1rem;
+    border :solid black 2px;
+    padding: 10px;
+}
+.arrow-left, .arrow-right {
+    cursor: pointer;
+}
+.selected-option {
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 24px;
+}
+.role {
+    text-transform: uppercase;
+}
