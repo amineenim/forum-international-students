@@ -1,43 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../Styles/Publications.css'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx'
+import { ApiService } from '../Services/ApiService'
 
-const publications = [
-    {auteur : 'Tassa Yacine',
-    data : '25/03/2023',
-    titre : 'test',
-    contenu :'lorem ipsum test is jey sae ncncdzs'},
-    {auteur : 'Edouard CHEVENS',
-    data : '22/03/2023',
-    titre : 'lorem',
-    contenu :'lorem ipsum test is jey sae ncncdzs hello world hope everything goes well'},
-    {auteur : 'Amine MAOURID',
-    data : '20/03/2023',
-    titre : 'hello',
-    contenu :'hello evryone, react is cool'},
-    {auteur : 'yassine DALA',
-    data : '18/03/2023',
-    titre : 'greeting',
-    contenu :'lorem ipsum test is jey sae ncncdzs'},
-    {auteur : 'Abdelah ABDELLAOUI',
-    data : '03/03/2023',
-    titre : 'greeting',
-    contenu :'hello guys, i mlearning programming language called angular'},
-    {auteur : 'ilyass SAADANE',
-    data : '02/03/2023',
-    titre : 'greeting',
-    contenu :'testing the functionnality of pagination it works as expected !'}
-]
 
 function Publications() {
     const [initialIndex, setInitialIndex] = useState(0)
     const limit_posts = 4
     const [currentListing, setCurrentListing] = useState(1)
+    const [posts, setPosts] = useState([])
     // function that verifies if a number lies within a given range
     const isBetween = (x, min, max) => {
         return x >= min && x <= max
     }
+    // function that brings the posts 
+    useEffect(() => {
+        const makeApiCall = async() => {
+            try {
+                const response = await ApiService.get('/forums/')
+                if(response.status === 200 && response.statusText === "OK")
+                {
+                    setPosts(response.data.data)
+                }
+            } catch (error) {
+                console.log(error.response)
+            }
+        }
+        makeApiCall()
+    },[])
   return (
     <>
     <div className='list-publications'>
@@ -53,7 +44,7 @@ function Publications() {
             </thead>
             <tbody>
                 {
-                    publications.map(
+                    posts.map(
                         (publication, index) => {
                             if(index < initialIndex + limit_posts)
                             {
@@ -61,9 +52,9 @@ function Publications() {
                                 {
                                     return (
                                         <tr key={index}>
-                                            <td>{publication.auteur}</td>
-                                            <td>{publication.data}</td>
-                                            <td>{publication.titre}</td>
+                                            <td>{publication.name}</td>
+                                            <td>{publication.comment_max_date}</td>
+                                            <td>{publication.libelle_categorie}</td>
                                             <td>{publication.contenu.length >= 40 ? publication.contenu.slice(0, 39) + '...' : publication.contenu}</td>
                                             <td>
                                                 <div className='actions'>
@@ -77,9 +68,9 @@ function Publications() {
                                     {
                                         return (
                                             <tr key={index}>
-                                                <td>{publication.auteur}</td>
-                                                <td>{publication.data}</td>
-                                                <td>{publication.titre}</td>
+                                                <td>{publication.name}</td>
+                                                <td>{publication.comment_max_date}</td>
+                                                <td>{publication.libelle_categorie}</td>
                                                 <td>{publication.contenu.length >= 40 ? publication.contenu.slice(0, 39) + '...' : publication.contenu}</td>
                                                 <td>
                                                     <div className='actions'>
@@ -117,7 +108,7 @@ function Publications() {
         <span className='arrow-right'>
             <RxDoubleArrowRight size={26} 
             onClick={() => {
-                if(initialIndex + limit_posts < publications.length )
+                if(initialIndex + limit_posts < posts.length )
                 {
                     setInitialIndex(initialIndex + limit_posts)
                     setCurrentListing(currentListing + 1)
