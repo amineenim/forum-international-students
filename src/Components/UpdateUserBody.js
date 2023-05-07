@@ -83,23 +83,20 @@ function UpdateUserBody() {
     },[userToUpdate])
     // function that handles sending the request to API
     const handleUpdateUser = async(data) => {
-        const current_user = JSON.parse(localStorage.getItem('current_user'))
-        const id_user = current_user.id
-        console.log(data)
+       
         try {
             const response = await ApiService.put(`/users/admin`,{
                 email : data.email,
-                filiere : userToUpdate.filiere,
                 login : data.pseudo,
-                imageUrl : userToUpdate.imageUrl,
-                promotion : userToUpdate.promotion,
-                pays : userToUpdate.pays,
-                password : "Test123#",
                 name : data.nom,
                 id : userId,
                 role : data.role == "user" ? 'ROLE_USER' :'ROLE_ADMIN'
             })
-            console.log(response)
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                sessionStorage.setItem('success', "Utilisateur mis à jour avec succès !")
+                navigate('/admin')
+            }
         } catch (error) {
             console.log(error.response)
         }
