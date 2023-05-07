@@ -117,3 +117,14 @@ td .actions p {
 .role {
     text-transform: uppercase;
 }
+.success-notification {
+    background-color: rgb(104, 230, 104);
+    display: flex;
+    align-items: center;
+    align-self: center;
+    border-radius: 10px;
+    font-size: 18px;
+}
+.success-notification span {
+    cursor: pointer;
+}

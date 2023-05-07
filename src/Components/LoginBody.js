@@ -1,6 +1,6 @@
 
 
-import React from 'react'
+import React, { useState } from 'react'
 import '../Styles/LoginBody.css'
 import {FcGoogle} from 'react-icons/fc'
 import { FaLock } from 'react-icons/fa'
@@ -29,7 +29,6 @@ function LoginBody() {
         } catch (error) {
             console.log(error.response)
         }
-        
     }
     
   return (

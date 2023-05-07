@@ -5,11 +5,12 @@ import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx'
 import { ApiService } from '../Services/ApiService'
 
 
-function Publications() {
+function Publications(props) {
     const [initialIndex, setInitialIndex] = useState(0)
     const limit_posts = 4
     const [currentListing, setCurrentListing] = useState(1)
     const [posts, setPosts] = useState([])
+    const [postsDataHasChanged, setPostsDataHasChanged] = useState(false)
     // function that verifies if a number lies within a given range
     const isBetween = (x, min, max) => {
         return x >= min && x <= max
@@ -22,13 +23,28 @@ function Publications() {
                 if(response.status === 200 && response.statusText === "OK")
                 {
                     setPosts(response.data.data)
+                    setPostsDataHasChanged(false)
                 }
             } catch (error) {
                 console.log(error.response)
             }
         }
         makeApiCall()
-    },[])
+    },[postsDataHasChanged])
+    // function that requests the API to delete a given post 
+    const deletePost = async(id) => {
+        try {
+            const response = await ApiService.remove(`/forums/?id=${id}`)
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                setPostsDataHasChanged(true)
+                props.setNotification("Publication supprimée avec succès !")
+                props.setCurrentPage("posts")
+            }
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
   return (
     <>
     <div className='list-publications'>
@@ -53,12 +69,14 @@ function Publications() {
                                     return (
                                         <tr key={index}>
                                             <td>{publication.name}</td>
-                                            <td>{publication.comment_max_date}</td>
+                                            <td>{publication.createdAt}</td>
                                             <td>{publication.libelle_categorie}</td>
                                             <td>{publication.contenu.length >= 40 ? publication.contenu.slice(0, 39) + '...' : publication.contenu}</td>
                                             <td>
                                                 <div className='actions'>
-                                                    <p><AiOutlineDelete size={26} color='red' /></p>
+                                                    <p
+                                                    onClick={() => deletePost(publication.id)}
+                                                    ><AiOutlineDelete size={26} color='red' /></p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -69,7 +87,7 @@ function Publications() {
                                         return (
                                             <tr key={index}>
                                                 <td>{publication.name}</td>
-                                                <td>{publication.comment_max_date}</td>
+                                                <td>{publication.createdAt}</td>
                                                 <td>{publication.libelle_categorie}</td>
                                                 <td>{publication.contenu.length >= 40 ? publication.contenu.slice(0, 39) + '...' : publication.contenu}</td>
                                                 <td>

@@ -6,11 +6,13 @@ import { ApiService } from '../Services/ApiService'
 import { AiOutlineDelete } from 'react-icons/ai'
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from 'react-icons/rx'
 
-function Comments() {
+function Comments(props) {
     // state that stores the first index of the comments displayed 
     const [initialIndex, setInitialIndex] = useState(0)
     const limit_comments = 5
     const [currentListing, setCurrentListing] = useState(1)
+    // state that stores whether comments data has changed after a delete 
+    const [commentsDataHasChanged, setCommentsDataHasChanged] = useState(false)
     // make an Apicall to bring comments data 
     const [comments, setComments] = useState([])
     useEffect(() => {
@@ -19,18 +21,33 @@ function Comments() {
                 const response = await ApiService.get('/forum/comments/')
                 if(response.status === 200 && response.statusText === "OK")
                 {
-                    console.log(response.data)
                     setComments(response.data.data)
+                    setCommentsDataHasChanged(false)
                 }
             } catch (error) {
                 console.log(error.response)
             }
         }
         makeApiCall()
-    },[])
+    },[commentsDataHasChanged])
     // function that verifies if a number lies within a given range
     const isBetween = (x, min, max) => {
         return x >= min && x <= max
+    }
+    // function that requests the API to delete a comment 
+    const handleDeleteComment =async(id) => {
+        try {
+            const response = await ApiService.remove(`/forum/comments/?id=${id}`)
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                props.setNotification('Commentaire supprimé avec succès !')
+                setCommentsDataHasChanged(true)
+                props.setCurrentPage("comments")
+            }
+            console.log(response)
+        } catch (error) {
+            console.log(error.response)
+        }
     }
   return (
     <>
@@ -62,7 +79,9 @@ function Comments() {
                                                     </td>
                                                     <td>
                                                         <div className='delete-comment'>
-                                                            <AiOutlineDelete size={26} color='red' />
+                                                            <AiOutlineDelete size={26} color='red' 
+                                                            onClick={() => handleDeleteComment(comment.id)}
+                                                            />
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -80,7 +99,9 @@ function Comments() {
                                                         </td>
                                                         <td>
                                                             <div className='delete-comment'>
-                                                                <AiOutlineDelete size={26} color='red' />
+                                                                <AiOutlineDelete size={26} color='red' 
+                                                                onClick={() => handleDeleteComment(comment.id)}
+                                                                />
                                                             </div>
                                                         </td>
                                                     </tr>

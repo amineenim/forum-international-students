@@ -1,6 +1,6 @@
 
 import React, { useEffect, useState } from 'react'
-import { AiOutlineEye, AiOutlinePlus, AiOutlineDelete } from 'react-icons/ai'
+import { AiOutlineEye, AiOutlinePlus, AiOutlineDelete, AiOutlineClose } from 'react-icons/ai'
 import {HiOutlinePencil} from 'react-icons/hi'
 import {RxDoubleArrowRight, RxDoubleArrowLeft} from 'react-icons/rx'
 import Publications from './Publications'
@@ -66,7 +66,12 @@ function AdminBody() {
         }
         makeApiCall()
     },[])
-   
+    // state that stores the notification in session
+    const [notification, setNotification] = useState('')
+    // cleans the notification when the user goes to another sections comments/users/posts
+    useEffect(() => {
+        setNotification('')
+    },[currentPage])
     
   return (
     <div className='admin-container'>
@@ -96,6 +101,19 @@ function AdminBody() {
                 )
             }
         </div>
+        {
+            notification && (
+                <div className='success-notification'>
+                    <p>{notification}</p>
+                    <span
+                    onClick={() => {
+                        sessionStorage.removeItem("success")
+                        setNotification('')
+                    }}
+                    ><AiOutlineClose size={26} /></span>
+                </div>
+            )
+        }
         {
             currentPage == "users" && (
                 <>
@@ -207,10 +225,10 @@ function AdminBody() {
             )
         }
         {
-            currentPage == "posts" && <Publications />
+            currentPage == "posts" && <Publications setCurrentPage={setCurrentPage} setNotification={setNotification} />
         }
         {
-            currentPage == "comments" && <Comments />
+            currentPage == "comments" && <Comments setCurrentPage = {setCurrentPage} setNotification={setNotification} />
         }
     </div>
   )
