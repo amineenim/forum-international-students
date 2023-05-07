@@ -1,0 +1,85 @@
+
+
+.update-user-admin {
+    height: 100vh;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+.update-user-by-admin {
+    width: 80%;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    height: 70%;
+}
+.update-user-byadmin-form {
+    width: 100%;
+    border :solid black 2px;
+    border-radius: 14px;
+}
+.update-user-byadmin-form .row {
+    display: flex;
+    align-items: start;
+    width: 80%;
+    margin-bottom: 1.6rem;
+    align-items: center;
+    justify-content: space-around;
+}
+.update-user-byadmin-form .row .field {
+    width: 32rem;
+    height: fit-content;
+}
+.update-user-byadmin-form .row .field input, .update-user-byadmin-form .row .field select {
+    width: 100%;
+    height: 3rem;
+    padding-left: 14px;
+    border : solid black 2px;
+    margin: 0;
+    border : solid black 2px;
+    border-radius: 18px;
+}
+.last-row {
+    height: 2rem;
+    width: 80%;
+}
+.confirme-field label {
+    display: block;
+    padding-left: 15px;
+    text-indent: 18px;
+}
+.confirme-field input {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    margin-right: 6px;
+    vertical-align: bottom;
+    position: relative;
+    top: 2px;
+}
+.update-user-byadmin-form .buttons-section {
+    display: flex;
+    margin-top: 4rem;
+    height: fit-content;
+    width: 40%;
+    justify-content: space-between;
+}
+.update-user-byadmin-form .buttons-section div {
+    background-color: rgb(70, 69, 69);
+    padding: 1rem 2rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 12rem;
+    text-align: center;
+    font-size: 18px;
+}
+.labelPlusError {
+    display: flex;
+    width: fit-content;
+    padding-left: 10px;
+}
+.error-text {
+    margin-left: 8px;
+}

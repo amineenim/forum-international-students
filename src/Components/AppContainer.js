@@ -17,6 +17,7 @@ import NotFound from '../pages/NotFound';
 import Admin from '../pages/Admin';
 import NewUser from '../pages/NewUser';
 import AdminUser from '../pages/AdminUser';
+import UpdateUser from '../pages/UpdateUser';
 
 function AppContainer() {
   return (
@@ -40,7 +41,9 @@ function AppContainer() {
         <Route path='/forum/:id' element={<ForumContent />} />
         <Route path='*' element={<NotFound />} />
         <Route path='/admin/new' element={<NewUser />} />
+        <Route path='/admin/users/update/:id' element={<UpdateUser />} />
         <Route path='/admin/users/:id' element={<AdminUser />} />
+
       </Routes>
     </Router>
   )

@@ -58,7 +58,6 @@ function AdminBody() {
                 {
                     setUsers(response.data.data)
                     countUsersByType(response.data.data)
-                    console.log(response.data.data)
                 }
             } catch (error) {
                 console.log(error.response)
@@ -165,7 +164,11 @@ function AdminBody() {
                                                                         onClick={()=> navigate(`/admin/users/${user.id}`)}
                                                                         />
                                                                     </p>
-                                                                    <p><HiOutlinePencil size={26} /></p>
+                                                                    <p>
+                                                                        <HiOutlinePencil size={26} 
+                                                                        onClick={() => navigate(`/admin/users/update/${user.id}`)}
+                                                                        />
+                                                                    </p>
                                                                     <p><AiOutlineDelete size={26} color='red' /></p>
                                                                 </div>
                                                             </td>
@@ -183,7 +186,11 @@ function AdminBody() {
                                                                         <p><AiOutlineEye size={26} color='green'
                                                                         onClick={() => navigate(`/admin/users/${user.id}`)} 
                                                                         /></p>
-                                                                        <p><HiOutlinePencil size={26} /></p>
+                                                                        <p>
+                                                                            <HiOutlinePencil size={26} 
+                                                                            onClick={() => navigate(`/admin/users/update/${user.id}`)}
+                                                                            />
+                                                                        </p>
                                                                         <p><AiOutlineDelete size={26} color='red' /></p>
                                                                     </div>
                                                                 </td>
