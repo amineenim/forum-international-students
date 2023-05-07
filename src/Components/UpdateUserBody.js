@@ -87,7 +87,7 @@ function UpdateUserBody() {
         const id_user = current_user.id
         console.log(data)
         try {
-            const response = await ApiService.put(`/users/admin/`,{
+            const response = await ApiService.put(`/users/admin`,{
                 email : data.email,
                 filiere : userToUpdate.filiere,
                 login : data.pseudo,
