@@ -9,7 +9,9 @@ import UpdateUserBody from '../Components/UpdateUserBody'
 function UpdateUser() {
   return (
     <div>
-        <Header />
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <UpdateUserBody />
         <Footer />
     </div>

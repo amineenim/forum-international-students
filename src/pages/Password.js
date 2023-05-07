@@ -6,7 +6,9 @@ import Footer from '../Components/Footer'
 function Password() {
   return (
     <div>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <PasswordBody/>
         <Footer/>
     </div>

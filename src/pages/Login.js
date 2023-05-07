@@ -8,7 +8,9 @@ import LoginBody from '../Components/LoginBody';
 function Login() {
   return (
     <div className='login-page'>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <LoginBody/>
         <Footer/>
     </div>

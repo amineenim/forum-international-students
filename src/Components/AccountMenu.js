@@ -21,6 +21,8 @@ export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
+  const userInfo = JSON.parse(localStorage.getItem('current_user'));
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -42,8 +44,16 @@ export default function AccountMenu() {
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
       >
-        <p>Mon Compte</p>
-        <FaUserAlt/>
+        <div  className='flex items-center'>
+          <div className='font-serif font-bold text-black text-xl mr-2'>
+            <span>{(userInfo?.login) ? userInfo?.login :"Mon compte"}</span>
+          </div>
+          <div className='mr-2'>
+            {
+              userInfo?.imageUrl ? <img src={userInfo.imageUrl} alt="" className="profile-picture" /> :  <FaUserAlt/>
+            }
+          </div>
+        </div>
       </Button>
       </ThemeProvider>
       {

@@ -8,7 +8,9 @@ import '../Styles/RegistrationBody.css';
 function Registration() {
   return (
     <div className='registration-page'>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <RegistrationBody/>
         <Footer/>
     </div>

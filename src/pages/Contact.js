@@ -6,7 +6,9 @@ import Footer from '../Components/Footer'
 function Contact() {
   return (
     <div>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <ContactBody/>
         <Footer/>
     </div>

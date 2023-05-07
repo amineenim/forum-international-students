@@ -7,7 +7,9 @@ import '../Styles/Admin.css'
 function Admin() {
   return (
     <div className='admin-page'>
-        <Header />
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <AdminBody />
         <Footer />
     </div>

@@ -6,9 +6,11 @@ import Footer from '../Components/Footer'
 function ForumHome() {
   return (
     <div>
+      <div className='mb-[9%]'>
         <Header/>
-        <ForumHomeBody/>
-        <Footer/>
+      </div>
+      <ForumHomeBody/>
+      <Footer/>
     </div>
   )
 }

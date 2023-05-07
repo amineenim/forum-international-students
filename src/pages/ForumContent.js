@@ -8,7 +8,9 @@ function ForumContent() {
     const { id } = useParams()
     return (
         <div>
-            <Header/>
+            <div className='mb-[9%]'>
+                <Header/>
+            </div>
             <ForumContentBody id={id}/>
             <Footer/>
         </div>

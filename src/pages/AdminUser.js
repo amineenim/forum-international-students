@@ -9,7 +9,9 @@ import '../Styles/AdminUser.css'
 function AdminUser() {
   return (
     <div className='view-user-admin-page'>
-        <Header />
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <ViewUser />
         <Footer />
     </div>

@@ -6,7 +6,9 @@ import Footer from '../Components/Footer'
 function Post() {
   return (
     <div>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <PostBody/>
         <Footer/>
     </div>

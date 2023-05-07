@@ -9,7 +9,9 @@ import '../Styles/NewUser.css'
 function NewUser() {
   return (
     <div className='new-user-page'>
-        <Header />
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <CreateUser />
         <Footer />
     </div>

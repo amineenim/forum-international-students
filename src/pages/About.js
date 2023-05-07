@@ -6,7 +6,9 @@ import Footer from '../Components/Footer'
 function About() {
   return (
     <div>
+        <div className='mb-[9%]'>
         <Header/>
+      </div>
         <AboutBody/>
         <Footer/>
     </div>

@@ -99,7 +99,7 @@ function NouveauPoste() {
             }}
           >
             <Typography component="h1" variant="h5">
-              Nouveau Poste
+              Nouveau Post
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
               <Grid container spacing={3}>

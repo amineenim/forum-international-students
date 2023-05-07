@@ -8,7 +8,9 @@ import TemoignageBody from '../Components/TemoignageBody';
 function Temoignage() {
   return (
     <div className='temoignage-page'>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <TemoignageBody/>
         <Footer/>
     </div>

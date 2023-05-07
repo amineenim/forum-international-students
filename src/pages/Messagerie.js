@@ -8,7 +8,9 @@ import MessagerieBody from '../Components/MessagerieBody'
 function Messagerie() {
   return (
     <div className='messagerie-page'>
-        <Header />
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <MessagerieBody />
         <Footer />
     </div>

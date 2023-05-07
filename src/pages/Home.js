@@ -7,7 +7,9 @@ import Footer from '../Components/Footer'
 function Home() {
   return (
     <div className='home-page'>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <HomeBody/>
         <Footer/>
     </div>

@@ -7,7 +7,9 @@ import ProfileBody from '../Components/ProfileBody';
 function UserProfile() {
   return (
     <div className='profile-page'>
-        <Header/>
+        <div className='mb-[9%]'>
+          <Header/>
+        </div>
         <ProfileBody/>
         <Footer/>
     </div>

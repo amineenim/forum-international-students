@@ -8,7 +8,9 @@ import '../Styles/NotFound.css'
 function NotFound(){
     return (
         <div className="not-found-page">
-            <Header />
+            <div className='mb-[9%]'>
+            <Header/>
+            </div>
             <NotFoundBody />
             <Footer />
         </div>
