@@ -160,7 +160,11 @@ function AdminBody() {
                                                             <td className='role'>{user.role}</td>
                                                             <td>
                                                                 <div className='actions'>
-                                                                    <p><AiOutlineEye size={26} color='green' /></p>
+                                                                    <p>
+                                                                        <AiOutlineEye size={26} color='green' 
+                                                                        onClick={()=> navigate(`/admin/users/${user.id}`)}
+                                                                        />
+                                                                    </p>
                                                                     <p><HiOutlinePencil size={26} /></p>
                                                                     <p><AiOutlineDelete size={26} color='red' /></p>
                                                                 </div>
@@ -176,7 +180,9 @@ function AdminBody() {
                                                                 <td className='role'>{user.role}</td>
                                                                 <td>
                                                                     <div className='actions'>
-                                                                        <p><AiOutlineEye size={26} color='green' /></p>
+                                                                        <p><AiOutlineEye size={26} color='green'
+                                                                        onClick={() => navigate(`/admin/users/${user.id}`)} 
+                                                                        /></p>
                                                                         <p><HiOutlinePencil size={26} /></p>
                                                                         <p><AiOutlineDelete size={26} color='red' /></p>
                                                                     </div>

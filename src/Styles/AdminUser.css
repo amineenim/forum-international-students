@@ -1,0 +1,51 @@
+
+.view-user-admin {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 6rem;
+}
+.view-user-admin .top-admin-view-user {
+    background-color: rgb(177, 171, 171);
+    display: flex;
+    font-size: 30px;
+    padding: 1rem;
+    align-items: center;
+    width: 90%;
+    border-radius: 12px;
+    border : solid black 1px;
+    margin-bottom: 3rem;
+}
+.fiche-user {
+    display: flex;
+    flex-direction: column;
+    border: solid black 2px;
+    border-radius: 18px;
+    width: 60%;
+    padding: 4rem;
+    height: 80%;
+    justify-content: space-around;
+    align-self: center;
+}
+.fiche-user .top-fiche {
+    display: flex;
+    align-items: center;
+    font-size: 36px;
+    font-weight: bold;
+}
+.top-fiche img {
+    height: 20rem;
+    border-radius: 50%;
+    border : solid black 2px;
+    margin-right: 5rem;
+    width: 20rem;
+}
+.body-fiche {
+    margin-top: 2rem;
+    font-size: 23px;
+    height: 23rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 2rem;
+}
