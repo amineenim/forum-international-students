@@ -7,9 +7,17 @@ import Publications from './Publications'
 import Comments from './Comments'
 import { ApiService } from '../Services/ApiService'
 import { useNavigate } from 'react-router-dom'
+import AuthService from '../Services/AuthService'
 
 
 function AdminBody() {
+    // function that verifies if the user actually is an admin 
+    useEffect(() => {
+        if(!AuthService.isAdmin())
+        {
+            navigate('/')
+        }
+    },[])
     const navigate = useNavigate()
     // limit of users to display per page 
     const limit_users = 4
@@ -19,6 +27,8 @@ function AdminBody() {
     const [currentPage, setCurrentPage] = useState("users")
     // state that stores the current list number in pagination
     const [currentListing, setCurrentListing] = useState(1)
+    // state that stores whether users data has changed
+    const [usersDataHasChanged, setUsersDataHasChanged] = useState(false)
     // function that determines which text to render 
     const titleTorender = (option) => {
         switch (option) {
@@ -64,13 +74,33 @@ function AdminBody() {
             }
         }
         makeApiCall()
-    },[])
+    },[usersDataHasChanged])
     // state that stores the notification in session
     const [notification, setNotification] = useState('')
     // cleans the notification when the user goes to another sections comments/users/posts
     useEffect(() => {
         setNotification('')
     },[currentPage])
+    // verifies if there's a notification in the session
+    useEffect(() => {
+        if(sessionStorage.getItem('success')){
+            setNotification(sessionStorage.getItem('success'))
+        }
+    },[])
+    // function that handles sending the delete request to the backend 
+    const handleDeleteUser = async(id) => {
+        console.log(id)
+        try {
+            const response = await ApiService.remove(`/users/admin?id=${id}`)
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                setUsersDataHasChanged(true)
+                setNotification("Utilisateur supprimé avec succès !")
+            }
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
     
   return (
     <div className='admin-container'>
@@ -113,6 +143,7 @@ function AdminBody() {
                 </div>
             )
         }
+        
         {
             currentPage == "users" && (
                 <>
@@ -169,7 +200,15 @@ function AdminBody() {
                                                                         onClick={() => navigate(`/admin/users/update/${user.id}`)}
                                                                         />
                                                                     </p>
-                                                                    <p><AiOutlineDelete size={26} color='red' /></p>
+                                                                    {
+                                                                         JSON.parse(localStorage.getItem('current_user')).id !== user.id && (
+                                                                            <p>
+                                                                                <AiOutlineDelete size={26} color='red' 
+                                                                                onClick={() => handleDeleteUser(user.id)}
+                                                                                />
+                                                                            </p>
+                                                                        )
+                                                                    }
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -191,7 +230,15 @@ function AdminBody() {
                                                                             onClick={() => navigate(`/admin/users/update/${user.id}`)}
                                                                             />
                                                                         </p>
-                                                                        <p><AiOutlineDelete size={26} color='red' /></p>
+                                                                        {
+                                                                         JSON.parse(localStorage.getItem('current_user')).id !== user.id && (
+                                                                            <p>
+                                                                                <AiOutlineDelete size={26} color='red' 
+                                                                                onClick={() => handleDeleteUser(user.id)}
+                                                                                />
+                                                                            </p>
+                                                                        )
+                                                                        }
                                                                     </div>
                                                                 </td>
                                                             </tr>
