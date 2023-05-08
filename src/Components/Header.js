@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 
 function Header(){
     return (
-        <div className="fixed top-0 bg-white p-4">
+        <div className="fixed top-0 bg-[#ededed] p-4">
             <div className="flex items-center justify-end">
                 <div className="mon-compte"><AccountMenu/></div>
             </div>
@@ -20,9 +20,7 @@ function Header(){
                     </h2>
                 </div>
                 <div className="ml-[2%]">
-                    <div className="div-notif w-8 h-6 bg-[#f04f3f] rounded-xl flex items-center justify-center text-center text-white font-semibold p-2 font-serif">
-                        <span>1</span>
-                    </div>
+                    <div className="w-8 h-6 "></div>
                     <div className="uppercase font-serif underline pl-5 text-black font-bold text-2xl">
                         <span>
                             <NavLink to='/forum'>Forums</NavLink>

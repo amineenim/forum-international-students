@@ -9,6 +9,8 @@ import { ApiService } from "../Services/ApiService";
 import AuthService from '../Services/AuthService';
 import commentImg from '../assets/comment.png';
 import flagImg from '../assets/flag-solid.svg';
+import threeArrow from '../assets/chevron-triple.png';
+
 
 class ForumHomeBody extends React.Component {
     state = {
@@ -104,7 +106,7 @@ class ForumHomeBody extends React.Component {
                         <div className='px-[10%]'>
                             <div className='justify-end items-end text-right mb-[4%]'>
                                 <button onClick={() => this.activeAddNewForum()} className='uppercase bg-color-primary-1 bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-primary-1 px-2 py2 rounded-3xl h-10 underline font-semibold'>
-                                    <span>Créer un nouveau poste</span>
+                                    <span>Créer un nouveau post</span>
                                 </button>
                             </div>
                             <div className='flex justify-center items-center text-center mb-8'>
@@ -196,11 +198,17 @@ class ForumHomeBody extends React.Component {
                         </div>
                     </div> 
                 </div>) :
-                    (<div className='px-[10%] pb-10'>
-                        <div className='text-4xl font-bold'>
-                            <span>Nouveau Poste</span>
+                    (<div className='px-[10%] pb-10 pt-6'>
+                        <div className='w-full flex items-center bg-[#f1f4f8] py-4 px-2 rounded-2xl text-[#71727c] uppercase font-semibold'>
+                            <div><span className='text-2xl mr-4'>Forums</span></div>
+                            <div><img className='h-8 w-10 mr-4' src={threeArrow} /></div>
+                            <div><span className='mr-6 text-2xl'>/</span></div>
+                            <div className='text-2xl font-bold'>
+                                <span>Nouveau Post</span>
+                            </div>
                         </div>
-                        <div className='font-extrabold mt-10 mb-2 text-xl'>
+                        
+                        <div className='font-extrabold mt-6 mb-2 text-xl'>
                             <span>Catégorie *</span>
                         </div>
                         <div className='w-full'>
@@ -217,7 +225,7 @@ class ForumHomeBody extends React.Component {
                             <span>Titre *</span>
                         </div>
                         <div className='w-full'>
-                            <input id='titre' name='titre' placeholder='Titre du poste' className='w-full px-4 py-2 border-2 border-color-sixth'  />
+                            <input id='titre' name='titre' placeholder='Titre du post' className='w-full px-4 py-2 border-2 border-color-sixth'  />
                         </div>
                         <div className='font-extrabold mt-4 mb-2 text-xl'>
                             <span>Texte *</span>

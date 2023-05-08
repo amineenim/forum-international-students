@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import '../Styles/HomeBody.css';
+import '../Styles/Main.css';
 import studentsGlobe from '../assets/students-globe.jpg'
 import students from '../assets/students.avif'
 import conference from '../assets/conference.avif'
@@ -36,29 +36,33 @@ class HomeBody extends React.Component {
             <title>TOGETHER | Accueil</title>
         </Helmet>
         <div className='left'>
-            <h2>Votre réussite académique à portée de main,
+            <h2 className='text-[#31241e] text-3xl font-bold font-serif'>Votre réussite académique à portée de main,
                 où que vous soyez dans le monde !
             </h2>
-            <p>
+            <p className='text-xl text-[#31241e] font-serif mt-[20%]'>
                 Rencontrez d'autres étudiants du
                 monde entier sur nos forums en ligne.
                 Partagez vos expériences et élargissez
                 vos horizons avec notre communauté
                 d'étudiants internationaux !
             </p>
-            <Link to='/temoignages'>
-                <button className='btn'>Témoignages</button>
-            </Link>
+            <div className='flex items-start justify-start w-full mt-[10%]'>
+                <Link to='/temoignages'>
+                    <button  className='uppercase bg-color-secondary bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-secondary px-2 py2 rounded-3xl h-10 underline font-semibold'>
+                        <span>Témoignages</span>
+                    </button>
+                </Link>
+            </div>
         </div>
         <div className='right'>
-            <div className='arrowleft'>
+            <div className='arrowleft w-[50%] cursor-pointer'>
                 <FaArrowLeft className='arrows' onClick={() => {
                   this.state.currentImage > 0 ? this.setState({currentImage : this.state.currentImage - 1}) : this.setState({currentImage : this.images.length - 1})
                 }  
                 }/>
             </div>
-            <img src={this.images[this.state.currentImage]} alt="students-holding-the-globe"/>
-            <div className='arrowright'>
+            <img className='h-[100%] w-[100%] rounded-xl shadow-xl drop-shadow-lg shadow-blue' src={this.images[this.state.currentImage]} alt="students-holding-the-globe"/>
+            <div className='arrowright cursor-pointer'>
                 <FaArrowRight className='arrows' onClick={() => (
                     this.state.currentImage < this.images.length - 1 ? this.setState({currentImage : this.state.currentImage + 1}) : this.setState({currentImage : 0})
                 )}/>

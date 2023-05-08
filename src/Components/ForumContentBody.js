@@ -162,7 +162,7 @@ class ForumContentBody extends React.Component {
                 </Helmet>
                 
                 <div className='w-full bg-color-primary-2 mt-10 py-2'>
-                    <div className='w-[99%] px-[10%]'>
+                    <div className='w-[99%] px-[10%] pt-6'>
                         <div className='w-full flex items-center bg-[#f1f4f8] py-4 px-2 rounded-2xl text-[#71727c] uppercase font-semibold'>
                             <div><NavLink to='/forum'><span className='text-2xl mr-4'>Forums</span></NavLink></div>
                             <div><img className='h-8 w-10 mr-4' src={threeArrow} /></div>
