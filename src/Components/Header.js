@@ -1,14 +1,33 @@
 
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import together from '../assets/together.webp';
 import '../Styles/Header.css';
 import AccountMenu from "./AccountMenu";
 import { NavLink } from "react-router-dom";
+import { ApiService } from "../Services/ApiService";
+
 
 function Header(){
     const currentUrl = window.location.pathname;
-    console.log(currentUrl);
+    const [messageNotRead, setMessageNotRead] = useState(null);
+
+    useEffect(() => {
+        ApiService.get("/messages/not_read").then((response) => {
+        response = response.data?.data
+        setMessageNotRead(response[0]?.message_not_read);
+        });
+    }, []);
+
+    const [invitation, setInvitation] = useState(null);
+
+    useEffect(() => {
+        ApiService.get("/friend/requests/invitation").then((response) => {
+            response = response.data?.data
+            setInvitation(response[0]?.invitations);
+            });
+        }, []);
+
     return (
         <div className="fixed top-0 bg-[#ededed] p-4">
             <div className="flex items-center justify-end">
@@ -30,9 +49,15 @@ function Header(){
                     </div>
                 </div>
                 <div className="ml-[2%]">
-                    <div className="div-notif w-8 h-6 bg-[#f04f3f] rounded-xl flex items-center justify-center text-center text-white font-semibold p-2 font-serif">
-                        <span>4</span>
-                    </div>
+                    {
+                        messageNotRead ? 
+                        <div className="div-notif w-8 h-6 bg-[#f04f3f] rounded-xl flex items-center justify-center text-center text-white font-semibold p-2 font-serif">
+                            <span>{messageNotRead}</span>
+                        </div>
+                        :
+                        <div className="w-8 h-6"></div>
+                    }
+                    
                     <div className="uppercase font-serif underline pl-5  font-bold text-2xl color-primary-1-hover">
                         <span>
                             <NavLink to='/messages' className={`${currentUrl === '/messages' ? 'color-seventh' : 'text-black'} underline color-primary-1-hover`}>Messagerie</NavLink>
@@ -40,9 +65,15 @@ function Header(){
                     </div>
                 </div>
                 <div className="ml-[2%]">
-                    <div className="div-notif w-8 h-6 bg-[#f04f3f] rounded-xl flex items-center justify-center text-center text-white font-semibold p-2 font-serif">
-                        <span>2</span>
-                    </div>
+                    {
+                        invitation ? 
+                        <div className="div-notif w-8 h-6 bg-[#f04f3f] rounded-xl flex items-center justify-center text-center text-white font-semibold p-2 font-serif">
+                            <span>{invitation}</span>
+                        </div>
+                        :
+                        <div className="w-8 h-6"></div>
+                    }
+                    
                     <div className="uppercase font-serif underline pl-5 font-bold text-2xl color-primary-1-hover">
                         <span>
                             <NavLink to='/relation' className={`${currentUrl === '/relation' ? 'color-seventh' : 'text-black'} underline color-primary-1-hover`}>Relations</NavLink>
