@@ -12,6 +12,7 @@
     cursor: pointer;
     height: fit-content;
     border-radius: 10px;
+    margin-bottom: 0.3rem;
 }
 .profile-avatar img{
     height: 2.5rem;

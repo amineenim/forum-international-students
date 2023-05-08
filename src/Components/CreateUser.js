@@ -2,6 +2,7 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
+import { ApiService } from '../Services/ApiService'
 
 function CreateUser() {
     const navigate = useNavigate()
@@ -59,6 +60,23 @@ function CreateUser() {
     // function that handles creating a user after form submission is successeful
     const handleCreateUser = async(data) => {
         console.log(data)
+        try {
+            const response =await ApiService.post('/users/',{
+                email : data.email,
+                login : data.pseudo,
+                name : data.nom,
+                password : data.password,
+                role : data.role === "admin" ? "ROLE_ADMIN" : "ROLE_USER"
+            })
+            console.log(response.data)
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                sessionStorage.setItem('success', "Utilisateur crée avec succès !")
+                navigate('/admin')
+            }
+        } catch (error) {
+            console.log(error.response)
+        }
     }
   return (
     <div className='create-new-user-body'>

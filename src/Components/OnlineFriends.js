@@ -2,6 +2,8 @@
 
 import React from 'react'
 import SingleFriend from './SingleFriend'
+import '../Styles/OnlineFriends.css'
+import { FaUserFriends } from 'react-icons/fa'
 
 function OnlineFriends(props) {
     const onlinefriends = props.friends.filter(
@@ -24,8 +26,12 @@ function OnlineFriends(props) {
                         />
                     )
                 }
-            ) : "Pas d'amis en ligne !"
-           
+            ) : (
+                <div className='empty-list-of-friends'>
+                    <p>Aucun ami en ligne</p>
+                    <FaUserFriends size={26} />
+                </div>
+            )
         } 
     </div>
   )

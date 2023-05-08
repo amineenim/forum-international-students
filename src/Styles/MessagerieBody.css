@@ -1,55 +1,92 @@
 
 
 .messagerie-container {
-    background-image: url('../assets/bg-university.avif');
     background-repeat: repeat;
     height: 100vh;
     display: flex;
-    padding-top: 4rem ;
     justify-content: space-around;
-    padding-left: 3rem;
+    padding: 4rem;
     align-items: center;
 }
 .discussion {
-    background-color: bisque;
-    width: 60%;
+    width: 50%;
     height: 80%;
     display: flex;
     flex-direction: column;
-    border: solid black 2px;
     border-radius: 16px;
+    padding: 2rem;
+    border :solid black 1px;
 }
 .my-friends {
     background-color: bisque;
-    margin-right: 2rem;
     width: 26%;
     margin-right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding : 2rem 1rem;
-    height: 72%;
+    height: 90%;
     border-radius: 16px;
     border: solid black 2px;
+    justify-content: space-around;
 }
 .search input {
     padding-left: 20px;
+    height: 2.6rem;
     border: solid black 2px;
-    border-radius: 14px;
-    height: 2rem;
-    width: 70%;
+    border-radius: 10px;
+    width: 90%;
 }
 .search {
     display: flex;
     align-items: center;
-    width: 80%;
+    width: 100%;
     justify-content: center;
+    margin-bottom: 1.6rem;
+    margin-left: 16px;
 }
 .search div {
     cursor: pointer;
-    margin-left: 4px;
+    margin-left: 3px;
     padding-top: 0.4rem;
 }
 .my-friends .online {
-    width: 70%;
+    width: 90%;
+    height: 75%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.start-new-conversation {
+    height: fit-content;
+    border-radius: 10px;
+    background-color: black;
+    width: 80%;
+    color: white;
+    font-size: 17px;
+    padding: 1rem;
+    cursor: pointer;
+}
+.friend-nodisc-in-list {
+    padding: 0.4rem;
+    height: 2rem;
+    margin-bottom: 0.2rem;
+    border-bottom: solid black 2px;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.friend-with-nodisc-online {
+    width: 1rem;
+    height: 1rem;
+    background-color: green;
+    border-radius: 50%;
+}
+.friend-with-nodisc-outline {
+    width: 1rem;
+    height: 1rem;
+    background-color: gray;
+    border-radius: 50%;
 }
