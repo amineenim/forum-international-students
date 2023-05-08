@@ -48,7 +48,7 @@ class HomeBody extends React.Component {
             </p>
             <div className='flex items-start justify-start w-full mt-[10%]'>
                 <Link to='/temoignages'>
-                    <button  className='uppercase bg-color-secondary bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-secondary px-2 py2 rounded-3xl h-10 underline font-semibold'>
+                    <button  className='uppercase bg-color-secondary bg-color-primary-2-hover color-primary-2 color-secondary-hover border-color-secondary-hover border-2 border-color-secondary px-6 py2 rounded-3xl h-10 underline font-semibold'>
                         <span>Témoignages</span>
                     </button>
                 </Link>
