@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import UniversityImage from '../assets/bg-university.avif';
 import { Helmet } from 'react-helmet';
+import '../Styles/Main.css';
 
 const theme = createTheme({
   palette: {
@@ -59,131 +52,36 @@ export default function ConatctBody() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
+    <div className='container-bg w-full'>
       <Helmet>
         <title>TOGETHER | Contact</title>
       </Helmet>
-      <Container component="main" maxWidth="m">
-        <CssBaseline />
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            backgroundImage: `url(${UniversityImage})`,
-            height: '100vh',
-            padding: '2rem'
-          }}
-        >
-          <Box
-            sx={{
-              marginTop: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              backgroundColor: 'rgb(255, 241, 224)',
-              borderTopLeftRadius: '12px',
-              borderTopRightRadius: '12px',
-              border : 'solid black 2px',
-              width: '50%'
-              
-
-            }}
-          >
-          <Typography component="h1" variant="h5">
-            Contactez nous
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 2 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="name"
-                  value={name}
-                  onChange={handleNameChange}
-                  fullWidth
-                  id="name"
-                  label="Nom"
-                  autoFocus
-                  InputProps={{
-                    style: {
-
-                      backgroundColor: 'white',
-                    },
-                  }}
-                  error={nameError}
-                  helperText={nameError ? 'Le nom est obligatoire' : ''}
-                  onBlur={() => {
-                    if (name.trim() === '') {
-                      setNameError(true);
-                    }
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  id="email"
-                  label="Adresse mail"
-                  name="email"
-                  value={email}
-                  onChange={handleEmailChange}
-                  autoComplete="family-name"
-                  InputProps={{
-                    style: {
-
-                      backgroundColor: 'white',
-                    },
-                  }}
-                  error={emailError}
-                  helperText={emailError ? "L'adresse mail est obligatoire" : ''}
-                  onBlur={() => {
-                    if (email.trim() === '') {
-                      setEmailError(true);
-                    }
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  fullWidth
-                  id="message"
-                  label="Message"
-                  name="message"
-                  value={message}
-                  onChange={handleMessageChange}
-                  autoComplete="message"
-                  multiline
-                  rows={4}
-                  InputProps={{
-                    style: {
-
-                      backgroundColor: 'white',
-                    },
-                  }}
-                  error={messageError}
-                  helperText={messageError ? 'Le message est obligatoire' : ''}
-                  onBlur={() => {
-                    if (message.trim() === '') {
-                      setMessageError(true);
-                    }
-                  }}
-                />
-              </Grid>
-
-
-            </Grid>
-            <Button
-              type="submit"
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
-            >
-              Envoyer
-            </Button>
-          </Box>
-        </Box>
-      </Box>
-    </Container>
-    </ThemeProvider >
+      <div className='pt-[4%] pb-[2%] px-[7%]'>
+        <div className='w-full flex items-center justify-center text-center text-4xl text-black font-bold'>
+          <span>Contactez nous </span>
+        </div>
+        <div className='mt-[2%] justify-center text-center text-xl'>
+          <p>
+          Bienvenue sur notre page de contact ! Nous sommes ravis que vous ayez pris le temps de nous rendre visite. 
+          Si vous avez des questions, des commentaires ou des préoccupations, n'hésitez pas à nous contacter. 
+          Nous sommes là pour vous aider.
+          </p>
+        </div>
+        <div className='grid grid-cols-2 grid-rows-1 gap-10 w-full my-[2%]'>
+            <div className=''>
+              <input type="text" className="form-control w-full h-10 text-black px-4 rounded-xl py-2 border-2 border-color-sixth" placeholder="Nom" />
+            </div>
+            <div className=''>
+              <input type="email" className="form-control w-full h-10 text-black px-4 rounded-xl py-2 border-2 border-color-sixth" placeholder="Email" />
+            </div>
+        </div>
+        <div className='w-full h-48'>
+          <textarea className="form-control w-full h-full text-black px-4 rounded-xl py-2 border-2 border-color-sixth" placeholder="Message" />
+        </div>
+        <div className='flex items-center justify-center w-full mt-[2%]'>
+          <button type="submit" className="bg-[#535353] text-white px-4 py-2 text-2xl font-bold rounded-xl w-36">Envoyer</button>
+        </div>
+      </div>
+    </div >
   );
 }
