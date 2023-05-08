@@ -18,6 +18,7 @@ import Admin from '../pages/Admin';
 import NewUser from '../pages/NewUser';
 import AdminUser from '../pages/AdminUser';
 import UpdateUser from '../pages/UpdateUser';
+import Relation from '../pages/Relation';
 
 function AppContainer() {
   return (
@@ -43,6 +44,7 @@ function AppContainer() {
         <Route path='/admin/new' element={<NewUser />} />
         <Route path='/admin/users/update/:id' element={<UpdateUser />} />
         <Route path='/admin/users/:id' element={<AdminUser />} />
+        <Route path='/relation' element={<Relation />} />
 
       </Routes>
     </Router>
