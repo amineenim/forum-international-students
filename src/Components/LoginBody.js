@@ -1,8 +1,7 @@
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../Styles/LoginBody.css'
-import {FcGoogle} from 'react-icons/fc'
 import { FaLock } from 'react-icons/fa'
 import { useForm } from 'react-hook-form'
 import { Helmet } from 'react-helmet';
@@ -11,8 +10,10 @@ import { useNavigate } from 'react-router'
 
 function LoginBody() {
     const navigate = useNavigate()
+    const loginRef = useRef(null)
+    const passwordRef = useRef(null)
     // destructring the object
-    const {register,handleSubmit,formState : {errors},reset} = useForm()
+    const {register,handleSubmit,formState : {errors},reset, setValue} = useForm()
     const onSubmit = async (data) => {
         console.log(data)
         reset({
@@ -30,6 +31,16 @@ function LoginBody() {
             console.log(error.response)
         }
     }
+    // function that verifies if the user is comming from the registration page
+    useEffect(() => {
+        if(sessionStorage.getItem('registrationWithSuccess'))
+        {
+            setValue("email", sessionStorage.getItem('registrationWithSuccess'))
+            passwordRef.current?.focus()
+        }else {
+            loginRef && loginRef?.current.focus()
+        }
+    },[])
     
   return (
     <div className='login-container'>
@@ -53,9 +64,9 @@ function LoginBody() {
                     <div className='row1'>
                         <label htmlFor='email'>Email</label>
                         <input type="text" 
-                        autoFocus
                         name="email"
                         id="email"
+                        ref={loginRef}
                         {...register("email",{
                             required : true
                         })}
@@ -67,6 +78,7 @@ function LoginBody() {
                         <label htmlFor='password'>Password</label>
                         <input type="password" 
                         name="password" 
+                        ref={passwordRef}
                         id="password"
                         {...register("password",{
                             required : true,

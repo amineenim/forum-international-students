@@ -1,49 +1,44 @@
 
 .registration-container {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../assets/bg-university.avif');
+    background-image: url('../assets/Background.png');
+    background-size: cover;
     padding : 2rem;
 }
 .registration-head {
     display: flex;
-    background-color: rgb(255, 241, 224);
     flex-direction: column;
     align-items: center;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border : solid black 2px;
-    border-bottom: none;
-    width: 43%;
+    width: fit-content;
+    color: rgb(73, 72, 72);
+    
 }
 .registration-head h3 {
     text-decoration: underline;
+    font-size: 26px;
+    cursor: pointer;
 }
 .registration-head h2 {
     padding : 1rem;
+    font-size: 36px;
 }
 
 .registration-foot {
-    background-color: rgb(255, 241, 224);
-    width: 43%;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
     padding : 0rem 0;
-    height:60%;
-    border : solid black 2px;
-    border-bottom-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-top: none;
 }
 .registration-foot form div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-bottom : 0.6rem;
+    margin-bottom : 0.3rem;
     padding : 0 1rem;
 }
 form {
@@ -57,25 +52,26 @@ form label {
 }
 
 form input {
-    height: 1.8rem;
-    width: 22rem;
-    border: gray solid 1px;
+    height: 2.1rem;
+    width: 26rem;
+    border: solid black 1px;
     border-radius: 8px;
     margin-top : 0.3rem;
     padding-left: 1rem;
 }
 
 .register-btn {
-    height: 2rem;
-    width: 50%;
-    margin : 1rem 0;
-    font-size: 1rem;
-    font-weight: bold;
-    border: gray solid 1px;
-    border-radius: 8px;
-    box-shadow: 6px 6px;
-    align-self: center;
+    height: fit-content;
+    padding: 0.6rem ;
+    font-size: 18px;
+    width: 60%;
+    color: white;
+    background-color: rgb(63, 62, 62);
+    border: solid white 2px;
+    border-radius: 10px;
     cursor: pointer;
+    width: 50%;
+    margin-top: 1rem;
 }
 .error-text {
     color: red;

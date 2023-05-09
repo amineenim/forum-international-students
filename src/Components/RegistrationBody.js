@@ -2,11 +2,44 @@
 
 import React from 'react';
 import {useForm} from 'react-hook-form';
+import { ApiService } from '../Services/ApiService';
+import { useNavigate } from 'react-router-dom';
 
 function RegistrationBody() {
+    const navigate = useNavigate()
     // destructring the object to get specific data
     const {register,handleSubmit,formState:{errors},reset}= useForm()
-    const onSubmit = (data) => console.log(data)
+    const onSubmit = async(data) => {
+        console.log(data)
+        try {
+            const response = await ApiService.post('/users/',{
+                email : data.email,
+                filiere : data.filiere,
+                login : data.login,
+                name : data.name,
+                pays : 'haiti',
+                promotion : data.promotion,
+                password : data.password
+            })
+            if(response.status === 200 && response.statusText === "OK")
+            {
+                reset({
+                    email : "",
+                    password : "",
+                    filiere : "",
+                    promotion : "",
+                    login : "",
+                    name : "",  
+                })
+                sessionStorage.setItem('registrationWithSuccess',data.login)
+                navigate('/login')
+            }
+            console.log(response.status, response.statusText)
+            console.log(response)
+        } catch (error) {
+            console.log(error.response)
+        }
+    }
     const constraints = {
         name : {
             required : "the name field is required",
@@ -14,6 +47,17 @@ function RegistrationBody() {
                 value : 3,
                 message : "the name must be at least 3 characters"
             } 
+        },
+        login : {
+            required : "le login est requis",
+            pattern : {
+                value : /^[a-zA-Z0-9]+$/,
+                message : "seulement des lettres et chiffres"
+            },
+            minLength : {
+                value : 4,
+                message : "longueur minimale de 4 caractères"
+            }
         },
         email : {
             required : "the email is required",
@@ -23,15 +67,19 @@ function RegistrationBody() {
             }
         },
         password : {
-            required : "the password is requiered",
+            required : "the password is required",
             minLength : {
-                value : 6,
+                value : 8,
                 message : "the password must be at least 6 characters"
             },
             maxLength : {
                 value : 14,
                 message : "the password can't exceed 14 characters"
-            } 
+            },
+            pattern : {
+                value :/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
+                message : "at least one capital letter, lower, number and a special character"
+            }
         },
         filiere : {
             required : "filiere is required",
@@ -81,6 +129,26 @@ function RegistrationBody() {
                         {errors.name.message}
                     </span>}
                 </div>
+                <div className='login-field'>
+                    <label htmlFor='login'>Login</label>
+                    <input type="text" 
+                    name="login" 
+                    id="login"
+                    {...register("login",constraints.login)}
+                    />
+                    {errors.login && errors.login.type==="required" && 
+                    <span className='error-text'>
+                        {errors.login.message}
+                    </span>}
+                    {errors.login && errors.login.type==="minLength" && 
+                    <span className='error-text'>
+                        {errors.login.message}
+                    </span>}
+                    {errors.login && errors.login.type==="pattern" && 
+                    <span className='error-text'>
+                        {errors.login.message}
+                    </span>}
+                </div>
                 <div className='email-field'>
                     <label htmlFor='email'>E-mail</label>
                     <input type="email" 
@@ -113,6 +181,10 @@ function RegistrationBody() {
                         {errors.password.message}
                     </span>)}
                     {errors.password && errors.password.type === "maxLength" &&
+                    (<span className='error-text'>
+                        {errors.password.message}
+                    </span>)}
+                    {errors.password && errors.password.type === "pattern" &&
                     (<span className='error-text'>
                         {errors.password.message}
                     </span>)}
