@@ -26,6 +26,7 @@
     height: 80%;
     justify-content: space-around;
     align-self: center;
+    background-color: white;
 }
 .fiche-user .top-fiche {
     display: flex;

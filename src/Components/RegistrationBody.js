@@ -108,7 +108,9 @@ function RegistrationBody() {
     <div className='registration-container'>
         <div className='registration-head'>
             <h2>Créer un nouveau compte et rejoingnez nous !</h2>
-            <h3>Déja inscrit ? connectez-vous</h3>
+            <h3
+            onClick={() => navigate('/login')}
+            >Déja inscrit ? connectez-vous</h3>
         </div>
         <div className='registration-foot'>
             <form onSubmit={handleSubmit(onSubmit)}>
