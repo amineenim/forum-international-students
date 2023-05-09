@@ -30,7 +30,7 @@ function Header(){
         }, []);
 
     return (
-        <div className="fixed top-0 bg-[#ededed] p-4 w-screen">
+        <div className="fixed top-0 bg-[#ededed] p-4 w-screen z-50">
             <div className="flex items-center justify-end">
                 <div className="mon-compte"><AccountMenu/></div>
             </div>
