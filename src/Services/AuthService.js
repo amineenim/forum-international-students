@@ -20,15 +20,26 @@ class AuthService {
                 if(response?.data?.utilisateur){
                     localStorage.setItem("current_user", JSON.stringify(response?.data?.utilisateur));
                 }
+                window.location.href = "/"
             }
         })
         .catch(error => {})
     }
 
     logout() {
-        this.token = null;
-        localStorage.removeItem('jwt_token');
-        localStorage.removeItem('current_user');
+        
+        const url = `${this.baseUrl}/logout`;
+        const token = localStorage.getItem('jwt_token');
+        const headers = { Authorization: `Bearer ${token}` };
+       
+        axios.post(url, {},  { headers })
+        .then(response => {
+            this.token = null;
+            localStorage.removeItem('jwt_token');
+            localStorage.removeItem('current_user');
+            window.location.href = "/login"
+        })
+        .catch(error => {})
     }
 
     isAuthenticated() {
