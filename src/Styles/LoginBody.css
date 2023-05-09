@@ -30,6 +30,7 @@
 .upper h3 {
     font-size: 26px;
     color: rgb(73, 72, 72);
+    cursor: pointer;
 }
 .middle {
     display: flex;
