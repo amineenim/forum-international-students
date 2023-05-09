@@ -52,7 +52,9 @@ function LoginBody() {
         </Helmet>
         <div className='upper'>
             <h2>Se Connecter</h2>
-            <h3>Pas encore de compte ? s'inscrire</h3>
+            <h3
+            onClick={() => navigate('/register')}
+            >Pas encore de compte ? s'inscrire</h3>
             <div className='middle'>
                 <div className='cadenas'>
                     <FaLock/>
