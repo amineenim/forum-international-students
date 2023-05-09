@@ -21,7 +21,17 @@ function Discussion(props) {
             navigate('/login')
         }
     }, [])
-    const selectedFriend = props.friends.filter((friend) => friend.id === props.user)[0]
+    let selectedFriend = props.isFriendsWithDiscussionDisplayed ? props.friendsWithDiscussion.filter((friend) => friend.id_user === props.user)[0] :
+                            props.friends.filter((friend) => friend.id === props.user)[0]
+    useEffect(() => {
+        if(props.isFriendsWithDiscussionDisplayed){
+            selectedFriend = props.friendsWithDiscussion.filter((friend) => friend.id_user === props.user)[0]
+            console.log(selectedFriend)
+        }else {
+            selectedFriend = props.friends.filter((friend) => friend.id === props.user)[0]
+            console.log(selectedFriend)
+        }
+    },[props.user])
     const current_user = JSON.parse(localStorage.getItem('current_user'))
     // state that stores the conversation messages 
     const [conversationMessages, setConversationMessages] = useState([])
@@ -29,9 +39,10 @@ function Discussion(props) {
     const [isMessagesChanged, setIsMessagesChanged] = useState(false)
     // function that get called each time the selected user is changed
     useEffect(() => {
+        //const id_recepteur = props.isFriendsWithDiscussionDisplayed ? selectedFriend.id_user : selectedFriend.id
         const makeApiCall = async() => {
             try {
-                const response = await ApiService.get(`/messages/?idEmeteur=${current_user.id}&idRecepteur=${selectedFriend.id}`)
+                const response = await ApiService.get(`/messages/?idEmeteur=${current_user.id}&idRecepteur=${props.user}`)
                 if(response.status === 200 && response.statusText === "OK")
                 {
                     setConversationMessages(response.data.data)

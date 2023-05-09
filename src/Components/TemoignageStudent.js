@@ -12,7 +12,7 @@ function TemoignageStudent(props) {
     const navigate = useNavigate()
     const current_user = JSON.parse(localStorage.getItem('current_user'))
     const initialStyle = {color : "white"}
-    const finalStyle = {color : "brown"}
+    const finalStyle = {color : "orange"}
     // state that stores a success notification 
     const [successNotification, setSuccessNotification] = useState("")
     useEffect(() => {
@@ -95,11 +95,12 @@ function TemoignageStudent(props) {
                 props.setIsViewing(true)
             }
         } catch (error) {
+            console.log(error)
             console.log(error.response)
-            if(error.response.status === 404 && error.response.statusText === "NOT FOUND")
+            /*if(error.response.status === 404 && error.response.statusText === "NOT FOUND")
             {
                 setFailureNotification("something went wrong !")
-            }
+            }*/
         }
     }
     // function that prefills the fields for the update testimony
@@ -190,7 +191,7 @@ function TemoignageStudent(props) {
                                 props.setIsViewing(false)
                             }}
                             >
-                                <p>Ajouter Un Témoignage</p>
+                                <p>Créer</p>
                                 <AiOutlinePlus size={26} />
                             </div>
                             {

@@ -1,60 +1,41 @@
 
 .login-container {
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-bottom: 2rem;
-    background-image: url('../assets/bg-university.avif');
+    background-image: url('../assets/Background.png');
     padding : 2rem;
 }
 .upper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgb(255, 241, 224);
     width: 40%;
+    padding: 1rem;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
-    border : solid black 2px;
     border-bottom: none;
+    height: 12rem;
 }
-.auth-google {
-    display: flex;
-    margin-top: 3rem;
+.upper h2 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: rgb(73, 72, 72);
 }
-.logo-google {
-    background-color: rgb(170, 168, 168);
-    height: 1.84rem;
-    width: 2rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-top: gray solid 1px;
-    border-bottom: gray solid 1px;
-    border-left: gray solid 1px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-}
-.btn-google {
-    height: 2rem;
-    width: 10rem;
-    font-size: 1rem;
-    background-color: rgb(54, 54, 236);
-    color: white;
-    border-top: gray solid 1px;
-    border-bottom: gray solid 1px;
-    border-right: gray solid 1px;
-    border-left: solid gray 0.3px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    cursor: pointer;
+.upper h3 {
+    font-size: 26px;
+    color: rgb(73, 72, 72);
 }
 .middle {
     display: flex;
     align-items: center;
     margin-top : 1rem;
+    font-size: 22px;
+    color: rgb(73, 72, 72);
 }
 .cadenas {
     height: 2rem;
@@ -73,11 +54,6 @@
 .lower {
     width: 40%;
     padding : 2rem 0;
-    background-color: rgb(255, 241, 224);
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border : solid black 2px;
-    border-top: none;
 }
 form {
     display: flex;
@@ -85,38 +61,38 @@ form {
     justify-content: center;
     align-items: center;
     padding: 1rem 2rem;
-    width: 60%;
+    width: 80%;
 }
 .form .row1, .form .row2 {
     display: flex;
     flex-direction: column;
     padding : 1rem 0;
     width: 100%;
+    margin-bottom: 0.5rem;
 }
 .form input {
-    height: 1.8rem;
+    height: 2.6rem;
     width: 26rem;
-    border : black solid 0.8px;
+    border : black solid 2px;
     padding-left : 1rem;
     margin-top : 2px;
     margin-bottom: 0.4px;
     border-radius: 8px;
-
 }
 .submit-btn {
-    height: 2rem;
+    height: fit-content;
+    padding: 0.6rem ;
+    font-size: 18px;
     width: 60%;
-    font-size: 0.9rem;
     color: white;
-    background-color: gray;
-    border: solid white 1px;
+    background-color: rgb(63, 62, 62);
+    border: solid white 2px;
     border-radius: 10px;
     cursor: pointer;
     width: 50%;
+    margin-top: 1.6rem;
 }
-.password-forgotten{
-    text-decoration: underline;
-}
+
 
 .errorMsg {
     color: red;

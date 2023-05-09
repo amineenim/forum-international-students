@@ -83,12 +83,12 @@ function TemoignageBody() {
                 isViewing && (
                     <div className='skip'>
                         <div className='left'>
-                            <FaAngleDoubleLeft size="2rem"
+                            <FaAngleDoubleLeft size="3rem" color='orange'
                             onClick={() => decrementTestimonials(currentTestimony) }
                             />
                         </div>
                         <div className='right'>
-                            <FaAngleDoubleRight size="2rem"
+                            <FaAngleDoubleRight size="3rem" color='orange'
                             onClick={() => incrementTestimonials(currentTestimony) }
                             />
                         </div>

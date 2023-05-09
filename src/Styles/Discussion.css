@@ -5,7 +5,6 @@
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    background-color: bisque;
     border : solid black 2px;
     border-radius: 18px;
     height: 100%;
@@ -71,13 +70,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 26px;
+    font-size: 24px;
     border-radius: 20px;
     height: 100%;
     background-image: url('../assets/messagerie.jpg');
     background-size :cover ;
     background-repeat: no-repeat;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 .no-conversation-text {
     display: flex;

@@ -16,8 +16,8 @@ function OutFriends(props) {
             (friend) => {
                 return (
                     <SingleFriend 
-                    key = {friend.id}
-                    id={friend.id}
+                    key = {friend.id_user}
+                    id={friend.id_user}
                     name = {friend.name}
                     status = {friend.online}
                     image = {friend.imageUrl}

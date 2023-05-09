@@ -27,6 +27,7 @@ function SingleFriend(props) {
     onClick={() => {
       props.setUser(props.id)
       handleRead(props.id)
+      console.log(props.id)
     }}
     >
         <div className='profile-avatar'>

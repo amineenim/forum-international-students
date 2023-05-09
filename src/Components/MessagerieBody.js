@@ -24,7 +24,7 @@ function MessagerieBody() {
     const current_user = JSON.parse(localStorage.getItem('current_user'))
     // state that stores whether the friends data has changed or not (a new discussion is started)
     const [isNewDiscussionStarted, setIsNewDiscussionStarted] = useState(false)
-    // state that will store friends's list 
+    // state that will store friends's list (grabs all friends)
     const [friends, setFriends] = useState([])
     useEffect(() => {
         const makeApiCall = async() => {
@@ -33,6 +33,7 @@ function MessagerieBody() {
                 if(response.status === 200 && response.statusText === "OK")
                 {
                     response.data && setFriends(response.data.data)
+                    //id 
                     console.log(response.data.data)
                 }
             } catch (error) {
@@ -40,30 +41,31 @@ function MessagerieBody() {
             }
         }
         makeApiCall()
-    },[isNewDiscussionStarted])
+    },[])
     ///////////////
     useEffect(() => {
         console.log('data has changed')
     },[isNewDiscussionStarted])
-    // state that stores friends of the user with whom he doesn't have a discussion 
-    const [friendsWithNoDiscussion, setFriendsWithNoDiscussion] = useState([]);
+    // state that stores friends of the user with whom he already has a discussion 
+    const [friendsWithDiscussion, setFriendsWithDiscussion] = useState([]);
     useEffect(() => {
-        const getFriendsWithNoDiscussion = async() => {
+        const getFriendsWithDiscussion = async() => {
             try {
-                const response = await ApiService.get(`/friends/?id=${current_user.id}`)
+                const response = await ApiService.get(`/messages/discussion`)
                 if(response.status === 200 && response.statusText === "OK")
                 {
-                    setFriendsWithNoDiscussion(response.data.data)
+                    setFriendsWithDiscussion(response.data.data)
+                    // id_user
                     console.log(response.data.data)
                 }
             } catch (error) {
                 console.log(error.response)
             }
         }
-        getFriendsWithNoDiscussion()
+        getFriendsWithDiscussion()
     },[isNewDiscussionStarted])
-    // state that stores whether the friends with no discussion are displayed or not 
-    const [isFriendsWithNoDiscussionDisplayed, setIsFriendsWithNoDiscussionDisplayed] = useState(false)
+    // state that stores whether the friends with discussion are displayed or not 
+    const [isFriendsWithDiscussionDisplayed, setIsFriendsWithDiscussionDisplayed] = useState(true)
     const searchRef = useRef(null)
     // state that will store the selected user to display the discussion 
     const [user, setUser] = useState(null)
@@ -75,7 +77,11 @@ function MessagerieBody() {
             <title>TOGETHER | Messages</title>
         </Helmet>
         <div className='discussion' >
-            <Discussion user={user} friends={friends} setIsNewDiscussionStarted={setIsNewDiscussionStarted} />
+            <Discussion user={user} friends={friends} 
+            friendsWithDiscussion = {friendsWithDiscussion}
+            setIsNewDiscussionStarted={setIsNewDiscussionStarted}
+            isFriendsWithDiscussionDisplayed = {isFriendsWithDiscussionDisplayed}
+            />
         </div>
         <div className='my-friends'>
             <div className='search'>
@@ -90,28 +96,28 @@ function MessagerieBody() {
             </div>
             <div className='online'>
                 {
-                    !isFriendsWithNoDiscussionDisplayed && (
+                    isFriendsWithDiscussionDisplayed && (
                         <div className='online-all'>
-                            <OnlineFriends friends={friends} setUser={setUser} />
-                            <OutFriends friends={friends} setUser={setUser} />
+                            <OnlineFriends friends={friendsWithDiscussion} setUser={setUser} />
+                            <OutFriends friends={friendsWithDiscussion} setUser={setUser} />
                         </div>
                     )
                 }
                 {
-                    isFriendsWithNoDiscussionDisplayed && (
-                        friendsWithNoDiscussion.map(
-                            (friendWithNoDiscussion) => {
+                    !isFriendsWithDiscussionDisplayed && (
+                        friends.map(
+                            (friend) => {
                                 return (
-                                    <div className='friend-nodisc-in-list' key={friendWithNoDiscussion.id}
+                                    <div className='friend-nodisc-in-list' key={friend.id}
                                     onClick={() => {
-                                        if(isFriendsWithNoDiscussionDisplayed){
-                                            setUser(friendWithNoDiscussion.id)
+                                        if(!isFriendsWithDiscussionDisplayed){
+                                            setUser(friend.id)
                                         }
                                     }}
                                     >
-                                        <p> {friendWithNoDiscussion.name} </p>
+                                        <p> {friend.name} </p>
                                         {
-                                            friendWithNoDiscussion.online ? (
+                                            friend.online ? (
                                                 <span className='friend-with-nodisc-online'></span>
                                             ) : (
                                                 <span className='friend-with-nodisc-outline'></span>
@@ -127,16 +133,16 @@ function MessagerieBody() {
             </div>
             <button className='start-new-conversation'
             onClick={() => {
-                if(isFriendsWithNoDiscussionDisplayed){
-                    setIsFriendsWithNoDiscussionDisplayed(false)
+                if(isFriendsWithDiscussionDisplayed){
+                    setIsFriendsWithDiscussionDisplayed(false)
                 }else{
-                    setIsFriendsWithNoDiscussionDisplayed(true)
+                    setIsFriendsWithDiscussionDisplayed(true)
                 }
             }}
             >
                 <p>
                     {
-                        isFriendsWithNoDiscussionDisplayed ? 'Annuler' : 'Commencer une nouvelle discussion'
+                        isFriendsWithDiscussionDisplayed ? 'commencer une nouvelle conversation' : 'Annuler' 
                     }
                 </p>
             </button>

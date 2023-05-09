@@ -1,30 +1,31 @@
 
 .temoignage-container {
-    height: 100vh;
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-image: url("../assets/testimonial.jpg");
+    background-image: url("../assets/Background.png");
     background-repeat: repeat;
+    padding: 6rem 3rem;
 }
 .temoignage-student-big-container {
-    width : 70%;
+    
+    width : 90%;
     height: 70%;
     display: flex;
     justify-content: space-between;
     padding : 2rem;
     font-size: 1.2rem;
-    background-color: gray;
     border-radius: 10px;
-    border: solid white 2px;
+    height: 80%;
 }
 .temoignage-student {
    height: fit-content;
    width: 80%;
    display: flex;
+   flex-direction: column;
    height: 100%;
-   align-items: center;
 }
 .manipulate-testimonial .add-new-testimonial, .edit-testimonial, .delete-testimonial {
     height: fit-content;
@@ -32,7 +33,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: rgb(36, 30, 30);
+    background-color: rgb(75, 70, 70);
     color: white;
     border: solid white 2px;
     border-radius: 10px;
@@ -43,22 +44,24 @@
 .data-temoignage {
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 90%;
     margin-left: 14px;
     align-items: center;
-    color: white;
-    height: fit-content;
+    height: 100%;
     padding: 2rem 0;
+    justify-content: space-between;
 }
 .manipulate-testimonial {
     padding: 1rem;
     width: 24%;
 }
 .data-temoignage h4 {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight :700;
 }
 .data-temoignage p {
     margin-top: 2rem;
+    font-size: 22px;
 }
 .data-temoignage .rating {
     display: flex;
@@ -69,12 +72,12 @@
     margin-right: 14px;
 }
 .temoignage-student img {
-    height: 25rem;
-    border : gray solid 1px;
+    height: 20rem;
     border-radius: 50%;
     margin-bottom: 2rem;
-    border : solid white 2px;
-    width: 25rem;
+    border : solid black 2px;
+    width: 15rem;
+    align-self: center;
 }
 
 .skip {
@@ -83,12 +86,10 @@
     align-items: center;
 }
 .skip .left {
-    background-color: brown;
     padding : 0.6rem 1rem;
     cursor: pointer;
 }
 .skip .right {
-    background-color:brown;
     padding : 0.6rem 1rem;
     cursor: pointer;
 }

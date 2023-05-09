@@ -39,12 +39,6 @@ function LoginBody() {
         <div className='upper'>
             <h2>Se Connecter</h2>
             <h3>Pas encore de compte ? s'inscrire</h3>
-            <div className='auth-google'>
-                <div className='logo-google'>
-                    <FcGoogle size={'1.4rem'} />
-                </div>
-                <button className='btn-google'>Google</button>
-            </div>
             <div className='middle'>
                 <div className='cadenas'>
                     <FaLock/>
@@ -67,7 +61,7 @@ function LoginBody() {
                         })}
                         />
                         {errors.email && errors.email.type === "required" &&
-                        (<p className='errorMsg'>The email is required !</p>)}
+                        (<p className='errorMsg'>The email is required *</p>)}
                     </div>
                     <div className='row2'>
                         <label htmlFor='password'>Password</label>
@@ -80,12 +74,11 @@ function LoginBody() {
                         })}
                         />
                         {errors.password && errors.password.type==="required" &&
-                        (<p className='errorMsg'>The password is required</p>)}
+                        (<p className='errorMsg'>The password is required *</p>)}
                         {errors.password && errors.password.type === "minLength" &&
                         (<p className='errorMsg'>the password must be at least 8 characters</p>)}
                     </div>
-                    <p className='password-forgotten'>Mot de passe oublié ?</p>
-                    <button type='submit' className='submit-btn'>Connexion</button>
+                    <button type='submit' className='submit-btn'><p>Connexion</p></button>
                 </form>
             </div>
         </div>
