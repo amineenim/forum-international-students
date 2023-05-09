@@ -88,6 +88,9 @@ export default function AccountMenu() {
           }}
           >
              <MenuItem onClick={handleLogOut}>se déconnecter</MenuItem> 
+             <NavLink to='/myprofile'>
+              <MenuItem onClick={handleClose}>Mon Profil</MenuItem>
+             </NavLink>
           </Menu>
         )
       }

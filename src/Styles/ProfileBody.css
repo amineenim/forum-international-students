@@ -3,8 +3,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    background-image: url("../assets/bg-university.avif");
+    height: 80vh;
+    background-image: url("../assets/Background.png");
 }
 .profile-container {
     height: fit-content;
@@ -15,7 +15,7 @@
 }
 .left-section {
     padding : 1rem 2rem;
-    background-color: bisque;
+    background-color: white;
     border: solid black 2px;
     border-radius: 12px;
     width: 50%;
@@ -26,17 +26,22 @@
 .student-profile {
     display: flex;
     align-items: center;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 .img-container {
     margin-right: 18px;
     padding : 1.5rem;
+    width: 17rem;
+    height: 15rem;
+    margin-bottom: 2rem;
 }
 .img-container img {
     height: 15rem;
     border : gray 1px solid;
     border-radius: 50%;
     z-index: 20;
+    image-resolution:initial;
 }
 .camera{
     margin-left : 11rem;
@@ -55,10 +60,7 @@
     margin-left : 10px;
 }
 .student-data {
-    background-color: rgb(27, 21, 21);
-    color: white;
     padding : 1rem;
-    border: white solid 2px;
     border-radius: 10px;
 }
 .student-data strong {
@@ -73,30 +75,61 @@
     flex-direction: column;
     justify-content: space-evenly;
     padding : 2rem;
-    background-color: bisque;
     height: 30rem;
-    border : solid black 2px;
-    border-radius: 12px;
     width: 30%;
     align-items: center;
 }
-.modify-profile, .change-password, .deconnecter {
+.deconnecter {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 0.6rem;
     padding: 0.5rem;
+    background-color: rgba(103,54,34,255) ;
+    border-radius: 16px;;
+}
+.modify-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem;
+    background-color: rgba(143,142,142,255) ;
+    border-radius: 16px;
+}
+.change-password {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.6rem;
+    padding: 0.5rem;
+    background-color: rgba(255,145,77,255) ;
+    border-radius: 16px;
 }
 .right-section .btn {
     height: fit-content;
     width : 14rem;
-    border : gray 1px solid ;
-    border-radius: 8px;
     color : white;
-    background-color: rgb(27, 21, 21);
-    font-size: 16px;
     margin: 0;
+    background-color: rgba(143,142,142,255);
 }
+.right-section .btn1 {
+    height: fit-content;
+    width : 14rem;
+    color : white;
+    margin: 0;
+    background-color: rgba(255,145,77,255);
+    font-size: 20px;
+}
+.right-section .btn2 {
+    height: fit-content;
+    width : 14rem;
+    color : white;
+    margin: 0;
+    background-color: rgba(103,54,34,255);
+    font-size: 20px;
+}
+
 .form-update-user-profile {
     background-color: red;
 }
@@ -126,12 +159,16 @@
     display:  flex;
     align-items: center;
     padding: 2rem 1rem;
-    background-color: rgb(135, 245, 135);
+    background-color: rgb(136, 248, 106);
     justify-content: space-between;
     width: 40%;
     border-radius: 10px;
-    border : solid green 1px;
+    border : solid rgb(136, 248, 136) 1px;
     margin-bottom: 3rem;
+    height: 2rem;
+}
+.notification-update-profile p {
+    margin: 0;
 }
 .error-update-profile {
     display:  flex;

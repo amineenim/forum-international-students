@@ -378,9 +378,8 @@ function ProfileBody() {
                 }
             </div>
             <div className='right-section'>
-                <h3>Actions To take : </h3>
                 <div className='modify-profile'>
-                    <BsFillFilePersonFill size={38} />
+                    <BsFillFilePersonFill size={38} color='white' />
                     <button className='btn'
                     onClick={() => {
                         setIsProfileBeingUpdated(true) 
@@ -389,16 +388,16 @@ function ProfileBody() {
                     >Modifier Profile</button>
                 </div>
                 <div className='change-password'>
-                    <RiLockPasswordFill size={38} />
-                    <button className='btn'
+                    <RiLockPasswordFill size={38} color='white' />
+                    <button className='btn1'
                     onClick={() => {
                         setIsPasswordBeingUpdated(true) 
                         setIsProfileBeingUpdated(false)
                         }}>Changer Mot de passe</button>
                 </div>
                 <div className='deconnecter'>
-                    <FiLogOut size={38} />
-                    <button className='btn'
+                    <FiLogOut size={38}  color='white' />
+                    <button className='btn2'
                     onClick = {() => handleLogOut()}
                     >Se Déconnecter</button>
                 </div>
