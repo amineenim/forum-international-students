@@ -5,6 +5,7 @@ import { BsFillPersonFill } from 'react-icons/bs'
 import { useParams } from 'react-router-dom'
 import myimage from '../assets/profiles/avatar.jpg'
 import { ApiService } from '../Services/ApiService'
+import '../Styles/Main.css';
 
 function ViewUser() {
     const userId = useParams().id
@@ -49,7 +50,7 @@ function ViewUser() {
     return formattedDate
    }
   return (
-    <div className='view-user-admin'>
+    <div className='view-user-admin container-bg'>
         <div className='top-admin-view-user'>
             <BsFillPersonFill size={36} />
             <h2>UTILISATEURS / FICHE</h2>

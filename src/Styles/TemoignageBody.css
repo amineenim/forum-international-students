@@ -6,8 +6,8 @@
     justify-content: center;
     align-items: center;
     background-image: url("../assets/Background.png");
-    background-repeat: repeat;
     padding: 6rem 3rem;
+    background-size: cover;
 }
 .temoignage-student-big-container {
     

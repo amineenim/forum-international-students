@@ -4,6 +4,7 @@
     flex-direction: column;
     padding: 1rem;
     background-image: url('../assets/Background.png');
+    background-size: cover;
 }
 .admin-navigation-menu{
     display: flex;

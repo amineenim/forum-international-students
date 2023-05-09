@@ -8,6 +8,7 @@
     padding: 4rem;
     align-items: center;
     background-image: url('../assets/Background.png');
+    background-size: cover;
 }
 .discussion {
     width: 50%;
