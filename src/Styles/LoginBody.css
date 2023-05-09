@@ -73,7 +73,7 @@ form {
 }
 .form input {
     height: 2.6rem;
-    width: 26rem;
+    width: 100%;
     border : black solid 2px;
     padding-left : 1rem;
     margin-top : 2px;

@@ -10,6 +10,14 @@ import { useNavigate } from 'react-router'
 
 function LoginBody() {
     const navigate = useNavigate()
+
+    // VERIFY IF THE USER IS AUTHENTICATED 
+    useEffect(() => {
+        if(AuthService.isAuthenticated())
+        {
+            navigate('/')
+        }
+    },[])
     // destructring the object
     const {register,handleSubmit,formState : {errors},reset, setValue} = useForm()
     const onSubmit = async (data) => {
