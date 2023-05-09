@@ -10,6 +10,7 @@ import { ApiService } from "../Services/ApiService";
 
 function Header(){
     const currentUrl = window.location.pathname;
+    const userInfo = JSON.parse(localStorage.getItem("current_user"));
     const [messageNotRead, setMessageNotRead] = useState(null);
 
     useEffect(() => {
@@ -29,7 +30,7 @@ function Header(){
         }, []);
 
     return (
-        <div className="fixed top-0 bg-[#ededed] p-4">
+        <div className="fixed top-0 bg-[#ededed] p-4 w-screen">
             <div className="flex items-center justify-end">
                 <div className="mon-compte"><AccountMenu/></div>
             </div>
@@ -97,12 +98,19 @@ function Header(){
                     </div>
                 </div>
                 <div className="ml-[2%]">
-                    <div className="w-8 h-6"></div>
-                    <div className="uppercase font-serif pl-5 font-bold text-2xl color-primary-1-hover">
-                        <span>
-                            <NavLink to='/admin' className={`${currentUrl === '/admin' ? 'color-seventh' : 'text-black'} underline color-primary-1-hover`}>Admin</NavLink>
-                        </span>
-                    </div>
+                    {
+                        userInfo?.is_admin ?
+                        <div>
+                            <div className="w-8 h-6"></div>
+                            <div className="uppercase font-serif pl-5 font-bold text-2xl color-primary-1-hover">
+                                <span>
+                                    <NavLink to='/admin' className={`${currentUrl === '/admin' ? 'color-seventh' : 'text-black'} underline color-primary-1-hover`}>Admin</NavLink>
+                                </span>
+                            </div>
+                        </div>
+                        :
+                        <div className="w-full"></div>
+                    }
                 </div>
             </div>
         </div>
