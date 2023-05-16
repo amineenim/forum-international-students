@@ -39,7 +39,11 @@ class AuthService {
             localStorage.removeItem('current_user');
             window.location.href = "/login"
         })
-        .catch(error => {})
+        .catch(error => {
+            localStorage.removeItem('jwt_token');
+            localStorage.removeItem('current_user');
+            window.location.href = "/login"
+        })
     }
 
     isAuthenticated() {
