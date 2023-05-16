@@ -3,7 +3,7 @@
     height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-image: url("../assets/Background.png");
     padding: 6rem 3rem;
