@@ -6,9 +6,11 @@ import TemoignageStudent from './TemoignageStudent'
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from 'react-icons/fa'
 import { Helmet } from 'react-helmet';
 import { ApiService } from '../Services/ApiService';
-
+import { useNavigate } from 'react-router-dom';
+import AuthService from '../Services/AuthService';
 
 function TemoignageBody() {
+    const navigate = useNavigate()
     // state that stores whether the data from API changed or not
     const [hasDataChanged, setHasDataChanged] = useState(false)
     // state that stores the length of data array 
@@ -32,7 +34,13 @@ function TemoignageBody() {
         }
         makeApiCall()
     }, [hasDataChanged])
-    
+    // verify if the user is authenticated 
+    useEffect(() => {
+        if(!AuthService.isAuthenticated())
+        {
+            navigate('/login')
+        }
+    },[])
     // state that holds the current testimony being displayed
     const [currentTestimony, setCurrentTestimony]= useState(0)
     // function that handles navigating between different testimonials 
