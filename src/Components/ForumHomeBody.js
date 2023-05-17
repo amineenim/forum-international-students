@@ -95,13 +95,13 @@ class ForumHomeBody extends React.Component {
     render(){
         return (
             <div>
+                <Helmet>
+                    <title>TOGETHER | Forums</title>
+                </Helmet>
                 {
                     !this.state.isNewForum ? 
                     (<div className='forum-body'>
-                    <Helmet>
-                        <title>TOGETHER | Forums</title>
-                    </Helmet>
-    
+                    
                     <div className='w-[99%] pt-6'>
                         <div className='px-[10%]'>
                             <div className='justify-end items-end text-right mb-[4%]'>
